@@ -1,5 +1,5 @@
 <div>
-  <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id)) %>
+  <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
   <%= link_to 'User Show', @user, :rel => "facebox"  %>
   <% owner_area do  %>
     <%= link_to 'User Edit', edit_user_path(@user), :rel => "facebox" %>
