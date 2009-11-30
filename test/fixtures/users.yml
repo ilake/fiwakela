@@ -1,0 +1,22 @@
+# == Schema Information
+# Schema version: 20091129152625
+#
+# Table name: users
+#
+#  id          :integer         not null, primary key
+#  fb_id       :string(255)
+#  target_time :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#  timezone    :string(255)     default("Taipei")
+#  name        :string(255)
+#  image       :string(255)
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fb_id: MyString
+
+two:
+  fb_id: MyString

@@ -1,0 +1,23 @@
+# == Schema Information
+# Schema version: 20091129152625
+#
+# Table name: statuses
+#
+#  id             :integer         not null, primary key
+#  user_id        :integer
+#  state          :integer         default(0)
+#  continuous_num :integer         default(0)
+#  num            :integer         default(0)
+#  score          :integer         default(0)
+#  average        :datetime
+#  success_rate   :float           default(0.0)
+#  last_record_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value

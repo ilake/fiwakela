@@ -1,0 +1,61 @@
+<div>
+  <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id)) %>
+  <%= link_to 'User Show', @user, :rel => "facebox"  %>
+  <% owner_area do  %>
+    <%= link_to 'User Edit', edit_user_path(@user), :rel => "facebox" %>
+  <% end %>
+</div>
+<div style='clear:both;'></div>
+<div id='content'>
+  <%= image_tag(@user.image) %> <%= @user.name %>'shome
+
+  <div id="show_graph">
+    <%= render :partial => 'graph', :locals => {:times => @times, :target_times => @target_times} %>
+  </div>
+  <table>
+    <tr>
+      <th>state</th>
+      <th>continuous_num</th>
+      <th>num</th>
+      <th>score</th>
+      <th>average</th>
+      <th>success_rate</th>
+    </tr>
+
+    <tbody id='status_list'>
+      <%= render :partial => 'status', :locals => {:status => @user.status} %>
+    </tbody>
+  </table>
+
+  <% owner_area do  %>
+    <%= link_to 'New record, Wake Up', new_record_path, :rel => "facebox"  %>
+    <%= link_to 'New record, 補上', new_record_path(:type => 'add'), :rel => "facebox"  %>
+  <% end%>
+
+  <%= render :partial => 'date_range' %>
+
+  <table>
+    <tr>
+      <th>Time</th>
+      <th>Content</th>
+      <th>Success</th>
+      <th>Status</th>
+    </tr>
+
+    <tbody id='record_list'>
+      <% @records.each do |record| %>
+        <%= render :partial => 'record', :locals => {:record => record}%>
+      <% end %>
+    </tbody>
+  </table>
+  <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 2,:showform => true, :title => "#{@user.name} Diary Comments" ) %>
+</div>
+<div id='friend-list'>
+  <% for friend in @friends %>
+    <span>
+      <%= link_to image_tag(friend.image), user_records_path(friend.id) %>
+      <%= friend[:last_record_time].to_s(:time) %>
+      State: <%= friend.state %>
+    </span>
+  <% end %>
+</div>

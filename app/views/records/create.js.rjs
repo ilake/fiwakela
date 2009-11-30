@@ -1,0 +1,7 @@
+page.insert_html :top, 'record_list', :partial => 'record', :object => @record
+page.visual_effect :highlight, "record-#{@record.id}"
+page.call(:close_facebox)
+page.replace_html "status_list", :partial => 'status', :locals => {:status => @user.status}
+page.visual_effect :highlight, "status_list"
+page.call(:binding_facebox, "record-#{@record.id}")
+page.call(:trigger_publish, @record.content)

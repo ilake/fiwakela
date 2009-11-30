@@ -1,0 +1,20 @@
+<% content_for :page_specific do %>
+  <%= stylesheet_link_tag 'jquery-datepicker.custom.css' %>
+<% end %>
+
+<% content_for :js_rdy do %>
+  <%= javascript_include_tag 'datepicker/jquery-datepicker.min.js' %>
+  <%= javascript_include_tag 'datepicker/i18n/ui.datepicker-zh-TW.js' %>
+
+  <script type='text/javascript'>
+    $jq(function() {
+      $jq("#startDate").datepicker({dateFormat: 'yy-mm-dd' });
+      $jq("#endDate").datepicker({dateFormat: 'yy-mm-dd' });
+    });
+  </script>
+<% end %>
+<% form_tag records_path, :method => :get do %>
+  <%= text_field_tag :startDate, @startDate %>
+  <%= text_field_tag :endDate, @endDate %> 
+  <%= submit_tag 'submit' %>
+<% end %>

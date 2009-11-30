@@ -1,0 +1,14 @@
+<tr id="record-<%= record.id %>">
+    <td><%=h record.time.to_s(:time) %></td>
+    <%#=h record.target_time.to_s(:hm) if record.target_time %>
+    <% if record.pri && record.user != @me %>
+      <td>Secret</td>
+    <% else %>
+      <td><%=simple_format(record.content) %></td>
+    <% end %>
+    <td><%=h record.success %></td>
+    <td><%=h record.status %></td>
+    <td><%= link_to 'Edit', edit_record_path(record), :rel => "facebox" %></td>
+    <td><%= link_to_remote 'Destroy', :url => record, :confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+    <%#= link_to 'Show', record, :rel => "facebox"  %>

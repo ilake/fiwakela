@@ -1,0 +1,31 @@
+    $jq('a[rel*=facebox]').facebox();
+app/views/layouts/records.html.erb [Rails-view-layout-erb]                                   37,1-1         80%
+<%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id)) %>
+<fb:board xid="iwakela">
+</fb:board>
+<br />
+Friend list: <% for friend in @current_facebook_user.friends_with_this_app %>
+  <%= link_to image_tag(friend.pic_square), user_records_path(User.find_by_fb_id(friend.id)) %>
+<% end %>
+<br />
+<%= image_tag(@user.image) %> <%= @user.name %>'shome
+
+<div id="show_graph">
+  <%= render :partial => 'graph' %>
+</div>
+<h1>Listing Status</h1>
+
+<table>
+  <tr>
+    <th>state</th>
+    <th>continuous_num</th>
+    <th>num</th>
+    <th>score</th>
+    <th>average</th>
+    <th>success_rate</th>
+  </tr>
+
+  <tbody id='status_list'>
+      <%= render :partial => 'status', :locals => {:status => @user.status} %>
+app/views/records/index.html.erb [Rails-view-erb]                                           2,22-22        япя
+"app/views/records/index.html.erb" 59L, 1614C тяляeя

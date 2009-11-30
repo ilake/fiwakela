@@ -1,0 +1,52 @@
+8
+
+dir
+12704
+svn://svn.icetech.com.tw/algostars_web/public/javascripts/datepicker/i18n
+svn://svn.icetech.com.tw
+
+
+
+2009-09-23T02:47:15.213600Z
+12246
+lake
+
+
+svn:special svn:externals svn:needs-lock
+
+ui.datepicker-zh-CN.js
+file
+
+
+
+
+2009-09-18T10:03:53.000000Z
+6529b6fe208a39b11119a4ace16facf9
+2009-09-23T02:47:15.213600Z
+12246
+lake
+
+jquery-ui-i18n.js
+file
+
+
+
+
+2009-09-18T10:03:48.000000Z
+6d6fc5e5d4a0ff0c9eaafcf842f382cd
+2009-09-23T02:47:15.213600Z
+12246
+lake
+
+ui.datepicker-zh-TW.js
+file
+
+
+
+
+2009-09-18T10:03:54.000000Z
+71224da4bc95cab0beb9e1b6a2029a41
+2009-09-23T02:47:15.213600Z
+12246
+lake
+

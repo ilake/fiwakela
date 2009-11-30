@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Records: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold', 'facebox', 'record' %>
+  <%= yield :page_specific %>
+  <%= javascript_include_tag :defaults%>
+</head>
+<body>
+  <%= fb_connect_javascript_tag %>
+  <%= init_fb_connect "XFBML"%>
+  <div id="FB_HiddenIFrameContainer" style="display:none; position:absolute; left:-100px; top:-100px; width:0px; height: 0px;"></div>
+
+  <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+  <script type="text/javascript">
+    FB_RequireFeatures(["CanvasUtil"], function(){
+        FB.XdComm.Server.init("<%= FACEBOOKER['callback_url']%>/xd_receiver.htm");
+        FB.CanvasClient.startTimerToSizeToContent();
+
+  });
+</script>
+  <div id='container'>
+    <%= yield %>
+  </div>
+
+<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+<%= javascript_include_tag 'jquery', 'facebox', 'jquery.flot.min'%>
+<script>  
+  var $jq = jQuery.noConflict();  
+  function binding_facebox(r_id){
+    $jq('#'+ r_id + ' a[rel*=facebox]').facebox();
+  }
+
+  jQuery(document).ready(function($) {
+    $jq('a[rel*=facebox]').facebox();
+  })
+
+  function close_facebox(){
+    jQuery(document).trigger('close.facebox');
+  }
+
+  function trigger_publish(content){
+    var attachment = {
+      'media':[{'type':'image',
+        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
+        'href':'http://apps.facebook.com/iwakela'}],
+      'description' : 'Come to Iwakela to wake up together',
+      'caption' : 'My Diary'
+    };
+    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
+    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
+  }
+
+</script> 
+<%= yield :js_rdy %>
+</body>
+</html>

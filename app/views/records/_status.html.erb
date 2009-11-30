@@ -1,0 +1,8 @@
+<tr>
+  <td><%=h status.state %></td>
+  <td><%=h status.continuous_num %></td>
+  <td><%=h status.num %></td>
+  <td><%=h status.score %></td>
+  <td><%=h status.average.to_s(:hm) if status.average %></td>
+  <td><%=h status.success_rate %></td>
+</tr>
