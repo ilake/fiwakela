@@ -18,7 +18,7 @@ class RecordsController < ApplicationController
     friend_ids = friends.map(&:id)
     @friends = []
     friend_ids.each do |friend|
-      user = User.find_by_fb_id(friend)
+      user = User.find_by_fb_id(friend.to_s)
       user[:last_record_time] = user.status.last_record_at ? user.status.last_record_at : Time.zone.local(2000)
       @friends << user
     end
