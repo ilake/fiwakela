@@ -144,7 +144,7 @@ class Record < ActiveRecord::Base
   #只算最近21筆紀錄, 來算分數
   #最近21天的成功次數有多少
   def self.cal_score
-    success_count = self.success.count(:all, :select => "count(records.id) AS count_all", :order => "records.id DESC", :conditions => "records.time > '#{Time.zone.now.ago(21.days).at_beginning_of_day.to_s(:db)}'")
+    success_count = self.success.count(:all, :order => "id DESC", :conditions => "records.time > '#{Time.zone.now.ago(21.days).at_beginning_of_day.to_s(:db)}'")
     total_score = success_count*5
     total_score = 100 if total_score > 100
     total_score

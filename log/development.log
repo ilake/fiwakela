@@ -29569,3 +29569,109 @@ ActionView::TemplateError (undefined method `state' for #<User:0xb6f848a8>) on l
 Rendered rescues/_trace (110.4ms)
 Rendered rescues/_request_and_response (1.6ms)
 Rendering /home/lake/rails_app/iwakela-facebook/vendor/plugins/facebooker/templates/layout.erb (200)
+TIMEZONE~~Mon Nov 30 19:17:45 UTC 2009~~~~( 6 )~~~~( +06:00 )~~~2009-12-01 01:17:45 +0600~~~~[["Almaty", "+06:00"], ["Astana", "+06:00"], ["Dhaka", "+06:00"], ["Novosibirsk", "+06:00"], ["Rangoon", "+06:30"]]~~~
+Swapping facebooker config: '67e7091533f2616620e062794b957625'
+
+
+Processing RecordsController#auth (for 127.0.0.1 at 2009-12-01 03:19:47) [GET]
+  Parameters: {"fb_sig_app_id"=>"133258073504", "fb_sig_iframe_key"=>"34173cb38f07f89ddbebc2ac9128303f", "fb_sig_in_iframe"=>"1", "fb_sig_locale"=>"zh_TW", "fb_sig_in_new_facebook"=>true, "fb_sig"=>"881b1f895bc784d58ff136dcc077d00e", "fb_sig_added"=>true, "fb_sig_expires"=>Wed Dec 02 04:00:00 +0800 2009, "fb_sig_session_key"=>"2.ibuKmsSAVsT9Xph_ocnc6g__.86400.1259697600-1524172451", "fb_sig_cookie_sig"=>"7ae03dafff59690bd800f173e9e217ba", "fb_sig_ext_perms"=>"auto_publish_recent_activity", "fb_sig_ss"=>"GEzy_mEU5yn6_72Hz6igKQ__", "fb_sig_api_key"=>"67e7091533f2616620e062794b957625", "fb_sig_time"=>Tue Dec 01 03:19:46 +0800 2009, "fb_sig_profile_update_time"=>Mon Nov 16 17:49:09 +0800 2009, "fb_sig_user"=>"1524172451"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Redirected to http://localhost:3000/records
+Completed in 60ms (DB: 0) | 301 Moved Permanently [http://localhost/?fb_sig_in_iframe=1&fb_sig_iframe_key=34173cb38f07f89ddbebc2ac9128303f&fb_sig_locale=zh_TW&fb_sig_in_new_facebook=1&fb_sig_time=1259608786.7472&fb_sig_added=1&fb_sig_profile_update_time=1258364949&fb_sig_expires=1259697600&fb_sig_user=1524172451&fb_sig_session_key=2.ibuKmsSAVsT9Xph_ocnc6g__.86400.1259697600-1524172451&fb_sig_ss=GEzy_mEU5yn6_72Hz6igKQ__&fb_sig_cookie_sig=7ae03dafff59690bd800f173e9e217ba&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_api_key=67e7091533f2616620e062794b957625&fb_sig_app_id=133258073504&fb_sig=881b1f895bc784d58ff136dcc077d00e]
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-12-01 03:19:48) [GET]
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+  [4;36;1mRecord Load (1.0ms)[0m   [0;1mSELECT * FROM "records" WHERE (((time > '2009-11-27 02:00:00' AND time < '2009-12-01 01:59:59') AND ("records".user_id = 2)) AND ("records".user_id = 2)) ORDER BY time DESC[0m
+facebook.friends.getAppUsers (0.702889919281006) 
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = 100000346900183) LIMIT 1[0m
+  [4;36;1mStatus Load (1.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 4) LIMIT 1[0m
+  [4;35;1mUser Load (0.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = 100000482607784) LIMIT 1[0m
+  [4;36;1mStatus Load (1.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 3) LIMIT 1[0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = '1524172451') LIMIT 1[0m
+Rendered records/_graph (0.4ms)
+  [4;36;1mStatus Load (1.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 2) LIMIT 1[0m
+Rendered records/_status (1.5ms)
+Rendered records/_date_range (7.6ms)
+Rendered records/_record (8.1ms)
+Rendered records/_record (7.3ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendered records/_record (9.0ms)
+Completed in 845ms (View: 89, DB: 7) | 200 OK [http://localhost/records]
+TIMEZONE~~Mon Nov 30 20:05:04 UTC 2009~~~~( 7 )~~~~( +07:00 )~~~2009-12-01 03:05:04 +0700~~~~[["Bangkok", "+07:00"], ["Hanoi", "+07:00"], ["Jakarta", "+07:00"], ["Krasnoyarsk", "+07:00"]]~~~
+TIMEZONE~~Mon Nov 30 21:05:04 UTC 2009~~~~( 8 )~~~~( +08:00 )~~~2009-12-01 05:05:04 +0800~~~~[["Beijing", "+08:00"], ["Chongqing", "+08:00"], ["Hong Kong", "+08:00"], ["Irkutsk", "+08:00"], ["Kuala Lumpur", "+08:00"], ["Perth", "+08:00"], ["Singapore", "+08:00"], ["Taipei", "+08:00"], ["Ulaan Bataar", "+08:00"], ["Urumqi", "+08:00"]]~~~
+TIMEZONE~~Mon Nov 30 22:05:04 UTC 2009~~~~( 9 )~~~~( +09:00 )~~~2009-12-01 07:05:04 +0900~~~~[["Osaka", "+09:00"], ["Sapporo", "+09:00"], ["Seoul", "+09:00"], ["Tokyo", "+09:00"], ["Yakutsk", "+09:00"], ["Adelaide", "+09:30"], ["Darwin", "+09:30"]]~~~
+TIMEZONE~~Mon Nov 30 23:05:04 UTC 2009~~~~( 10 )~~~~( +10:00 )~~~2009-12-01 09:05:04 +1000~~~~[["Brisbane", "+10:00"], ["Canberra", "+10:00"], ["Guam", "+10:00"], ["Hobart", "+10:00"], ["Melbourne", "+10:00"], ["Port Moresby", "+10:00"], ["Sydney", "+10:00"], ["Vladivostok", "+10:00"]]~~~
+TIMEZONE~~Tue Dec 01 00:05:04 UTC 2009~~~~( 0 )~~~~( +00:00 )~~~2009-12-01 00:05:04 +0000~~~~[["Casablanca", "+00:00"], ["Dublin", "+00:00"], ["Edinburgh", "+00:00"], ["Lisbon", "+00:00"], ["London", "+00:00"], ["Monrovia", "+00:00"], ["UTC", "+00:00"]]~~~
+Swapping facebooker config: '67e7091533f2616620e062794b957625'
+
+
+Processing RecordsController#auth (for 127.0.0.1 at 2009-12-01 09:25:32) [GET]
+  Parameters: {"fb_sig_app_id"=>"133258073504", "fb_sig_iframe_key"=>"34173cb38f07f89ddbebc2ac9128303f", "fb_sig_in_iframe"=>"1", "fb_sig_locale"=>"zh_TW", "fb_sig_in_new_facebook"=>true, "fb_sig"=>"881b1f895bc784d58ff136dcc077d00e", "fb_sig_added"=>true, "fb_sig_expires"=>Wed Dec 02 04:00:00 +0800 2009, "fb_sig_session_key"=>"2.ibuKmsSAVsT9Xph_ocnc6g__.86400.1259697600-1524172451", "fb_sig_cookie_sig"=>"7ae03dafff59690bd800f173e9e217ba", "fb_sig_ext_perms"=>"auto_publish_recent_activity", "fb_sig_ss"=>"GEzy_mEU5yn6_72Hz6igKQ__", "fb_sig_api_key"=>"67e7091533f2616620e062794b957625", "fb_sig_time"=>Tue Dec 01 03:19:46 +0800 2009, "fb_sig_profile_update_time"=>Mon Nov 16 17:49:09 +0800 2009, "fb_sig_user"=>"1524172451"}
+  [4;36;1mUser Load (3.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."fb_id" = '1524172451') LIMIT 1[0m
+facebook.users.getInfo (1.25045394897461) fields = status,political,pic_small,name,quotes,is_app_user,tv,profile_update_time,meeting_sex,hs_info,timezone,relationship_status,hometown_location,about_me,wall_count,significant_other_id,pic_big,music,work_history,sex,religion,notes_count,activities,pic_square,movies,has_added_app,education_history,birthday,birthday_date,first_name,meeting_for,last_name,interests,current_location,pic,books,affiliations,locale,profile_url,proxied_email,email_hashes,allowed_restrictions,pic_with_logo,pic_big_with_logo,pic_small_with_logo,pic_square_with_logo,online_presence,verified,profile_blurb,username,website,is_blocked,family, uids = 1524172451
+Redirected to http://localhost:3000/records
+Completed in 2734ms (DB: 3) | 301 Moved Permanently [http://localhost/?fb_sig_in_iframe=1&fb_sig_iframe_key=34173cb38f07f89ddbebc2ac9128303f&fb_sig_locale=zh_TW&fb_sig_in_new_facebook=1&fb_sig_time=1259608786.7472&fb_sig_added=1&fb_sig_profile_update_time=1258364949&fb_sig_expires=1259697600&fb_sig_user=1524172451&fb_sig_session_key=2.ibuKmsSAVsT9Xph_ocnc6g__.86400.1259697600-1524172451&fb_sig_ss=GEzy_mEU5yn6_72Hz6igKQ__&fb_sig_cookie_sig=7ae03dafff59690bd800f173e9e217ba&fb_sig_ext_perms=auto_publish_recent_activity&fb_sig_api_key=67e7091533f2616620e062794b957625&fb_sig_app_id=133258073504&fb_sig=881b1f895bc784d58ff136dcc077d00e]
+
+
+Processing RecordsController#index (for 127.0.0.1 at 2009-12-01 09:25:35) [GET]
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+  [4;36;1mRecord Load (0.9ms)[0m   [0;1mSELECT * FROM "records" WHERE (((time > '2009-11-27 02:00:00' AND time < '2009-12-01 01:59:59') AND ("records".user_id = 2)) AND ("records".user_id = 2)) ORDER BY time DESC[0m
+facebook.friends.getAppUsers (0.758318901062012) 
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = 100000346900183) LIMIT 1[0m
+  [4;36;1mStatus Load (1.0ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 4) LIMIT 1[0m
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = 100000482607784) LIMIT 1[0m
+  [4;36;1mStatus Load (0.9ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 3) LIMIT 1[0m
+Rendering template within layouts/records
+Rendering records/index
+  [4;35;1mUser Load (1.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."fb_id" = '1524172451') LIMIT 1[0m
+Rendered records/_graph (47.2ms)
+  [4;36;1mStatus Load (1.2ms)[0m   [0;1mSELECT * FROM "statuses" WHERE ("statuses".user_id = 2) LIMIT 1[0m
+Rendered records/_status (80.8ms)
+Rendered records/_date_range (83.3ms)
+Rendered records/_record (118.2ms)
+Rendered records/_record (12.1ms)
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) [0m
+Rendered records/_record (20.1ms)
+Completed in 2597ms (View: 970, DB: 7) | 200 OK [http://localhost/records]
+TIMEZONE~~Tue Dec 01 02:05:08 UTC 2009~~~~( -2 )~~~~( -02:00 )~~~2009-12-01 00:05:08 -0200~~~~[["Mid-Atlantic", "-02:00"]]~~~
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (225.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (80.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20091116235158)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `fb_id` varchar(255), `target_time` datetime, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (16.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091116235158')[0m
+Migrating to CreateRecords (20091117232026)
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `time` datetime, `target_time` datetime, `content` text, `user_id` int(11), `success` tinyint(1) DEFAULT 1, `pri` tinyint(1) DEFAULT 0, `status` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091117232026')[0m
+Migrating to CreateStatuses (20091121011139)
+  [4;35;1mSQL (44.2ms)[0m   [0mCREATE TABLE `statuses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `state` int(11) DEFAULT 0, `continuous_num` int(11) DEFAULT 0, `num` int(11) DEFAULT 0, `score` int(11) DEFAULT 0, `average` datetime, `success_rate` float DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091121011139')[0m
+Migrating to AddUserTimezoneColumn (20091126022837)
+  [4;35;1mSQL (29.5ms)[0m   [0mALTER TABLE `users` ADD `timezone` varchar(255) DEFAULT 'Taipei'[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20091126022837')[0m
+Migrating to AddUsersName (20091128063329)
+  [4;35;1mSQL (4.8ms)[0m   [0mALTER TABLE `users` ADD `name` varchar(255)[0m
+  [4;36;1mSQL (4.8ms)[0m   [0;1mALTER TABLE `users` ADD `image` varchar(255)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091128063329')[0m
+Migrating to AddStatusLastRecordAt (20091129152625)
+  [4;36;1mSQL (39.7ms)[0m   [0;1mALTER TABLE `statuses` ADD `last_record_at` datetime[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20091129152625')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `records`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `records`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `records`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `statuses`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `statuses`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW KEYS FROM `statuses`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m

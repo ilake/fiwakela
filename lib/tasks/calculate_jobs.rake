@@ -49,6 +49,8 @@ namespace :cal do
     h = Time.now.utc.hour 
     if h < 12
       h = h*-1
+    elsif h > 13
+      h = h - 13
     end
     #h is the timezone need to reset
     zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
