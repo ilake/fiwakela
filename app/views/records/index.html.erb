@@ -1,6 +1,16 @@
-<% content_for :js_rdy do %>
-  <%= javascript_include_tag 'application' %>
-<% end %>
+<script>
+  function trigger_publish(content){
+    var attachment = {
+      'media':[{'type':'image',
+        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
+        'href':'http://apps.facebook.com/iwakela'}],
+      'description' : 'Come to Iwakela to wake up together',
+      'caption' : 'My Diary'
+    };
+    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
+    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
+  }
+</script>
 <div>
   <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
   <%= link_to 'User Show', @user, :rel => "facebox"  %>
@@ -33,6 +43,7 @@
   <% owner_area do  %>
     <%= link_to 'New record, Wake Up', new_record_path, :rel => "facebox"  %>
     <%= link_to 'New record, 補上', new_record_path(:type => 'add'), :rel => "facebox"  %>
+    <a href='#' onclick='trigger_publish("kerker");' >publish</a>
   <% end%>
 
   <%= render :partial => 'date_range' %>
