@@ -10,6 +10,10 @@
     var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
     FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
   }
+
+  function lala(){
+    alert('lala');
+  }
 </script>
 <div>
   <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
@@ -43,7 +47,8 @@
   <% owner_area do  %>
     <%= link_to 'New record, Wake Up', new_record_path, :rel => "facebox"  %>
     <%= link_to 'New record, 補上', new_record_path(:type => 'add'), :rel => "facebox"  %>
-    <a href='#' onclick='trigger_publish("kerker");' >publish</a>
+    <a href='#' onclick="trigger_publish('kerker');return false;" >publish</a>
+    <a href='#' onclick="lala();return false;" >publish</a>
   <% end%>
 
   <%= render :partial => 'date_range' %>
@@ -73,3 +78,16 @@
     </span>
   <% end %>
 </div>
+<script>
+  function trigger_publish(content){
+    var attachment = {
+      'media':[{'type':'image',
+        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
+        'href':'http://apps.facebook.com/iwakela'}],
+      'description' : 'Come to Iwakela to wake up together',
+      'caption' : 'My Diary'
+    };
+    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
+    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
+  }
+</script>
