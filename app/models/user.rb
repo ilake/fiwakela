@@ -23,11 +23,11 @@ class User < ActiveRecord::Base
 
   named_scope :unactived, :include => :status, :conditions => ["statuses.state <> ? AND statuses.state <> ? AND statuses.state <> ?", 1, 2, 4]
 
-  status = Status.content_columns.inject([]) do |result, column|
-    result << column.name
-  end.push(:to => :status)
-
-  delegate *status
+#  status = Status.content_columns.inject([]) do |result, column|
+#    result << column.name
+#  end.push(:to => :status)
+#
+#  delegate *status
   
 
   def create_default_user_setting
