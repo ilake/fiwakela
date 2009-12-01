@@ -42,18 +42,6 @@
     jQuery(document).trigger('close.facebox');
   }
 
-  function trigger_publish(content){
-    var attachment = {
-      'media':[{'type':'image',
-        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
-        'href':'http://apps.facebook.com/iwakela'}],
-      'description' : 'Come to Iwakela to wake up together',
-      'caption' : 'My Diary'
-    };
-    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
-    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
-  }
-
 </script> 
 <%= yield :js_rdy %>
 </body>
