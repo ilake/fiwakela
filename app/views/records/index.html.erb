@@ -55,7 +55,7 @@
     <span>
       <%= link_to image_tag(friend.image), user_records_path(friend.id) %>
       <%= friend[:last_record_time].to_s(:time) %>
-      State: <%= friend.state %>
+      State: <%= friend.status.state %>
     </span>
   <% end %>
 </div>
