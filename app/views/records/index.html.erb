@@ -1,5 +1,5 @@
 <script>
-  function trigger_publish(content){
+  function trigger_publish(){
     var attachment = {
       'media':[{'type':'image',
         'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
@@ -8,7 +8,7 @@
       'caption' : 'My Diary'
     };
     var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
-    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
+    FB.Connect.streamPublish('lala', attachment, actionLinks, null, 'Share your diary');
   }
 
   function lala(){
@@ -48,7 +48,8 @@
     <%= link_to 'New record, Wake Up', new_record_path, :rel => "facebox"  %>
     <%= link_to 'New record, 補上', new_record_path(:type => 'add'), :rel => "facebox"  %>
     <a href='#' onclick="trigger_publish('kerker');return false;" >publish</a>
-    <a href='#' onclick="lala();return false;" >publish</a>
+    <a href='#' onclick="lala();return false;" >lala</a>
+    <a href='#' onclick="trigger_publish();return false;" >kerker</a>
   <% end%>
 
   <%= render :partial => 'date_range' %>
