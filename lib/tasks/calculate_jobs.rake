@@ -47,15 +47,24 @@ namespace :cal do
   desc 'each hours reset time zone'
   task :reset_by_timezone => :environment do
     h = Time.now.utc.hour 
+    #h = -11 跟 13 同時reset
     if h < 12
       h = h*-1
     elsif h > 13
-      h = h - 13
+      h = 25 -h
     end
     #h is the timezone need to reset
     zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
     Time.zone = zones[0][0]
     RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.utc_offset.to_utc_offset_s} )~~~#{Time.zone.now}~~~~#{zones.inspect}~~~")
+
+    if h == -11
+      h = 13
+      zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
+      Time.zone = zones[0][0]
+      RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.utc_offset.to_utc_offset_s} )~~~#{Time.zone.now}~~~~#{zones.inspect}~~~")
+
+    end
   end
 
 end

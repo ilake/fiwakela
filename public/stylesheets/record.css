@@ -1,14 +1,32 @@
+.clear {
+  clear:both;
+}
 #friend-list {
-  width: 140px;
+  overflow-x: hidden;
+  float: left;
+  width: 120px;
+  height: 680px;
   border: 1px solid #CACACA;
   padding-left:1px;
-  margin-top:5px;
+  padding-top:1px;
 }
 
 #content {
+  float: right;
   width: 600px;
   border: 1px solid #CACACA;
+  padding:1px;
 }
 
+#container {
+  overflow: hidden;
+  position: relative;
+}
 
+#show_graph {
+  float:right;
+}
 
+#status_list {
+  float:left;
+}

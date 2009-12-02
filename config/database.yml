@@ -42,6 +42,6 @@ production:
   adapter: mysql
   database: fb_pro
   username: root
-  password: 
+  password: hiroot
   host: localhost
   encoding: utf8

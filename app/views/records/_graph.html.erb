@@ -105,9 +105,9 @@
                             var tiptime = integer + ":" + time;
                           }
 
-                          showTooltip(item.pageX, item.pageY,
+                          showTooltip(item.pageX-80, item.pageY,
                               "<div style='font-size:80%;color:#0000DD'>" +
-                                day.getFullYear() + "年" + (day.getMonth()+1) + "月" + day.getDate() + "日" +
+                                day.getFullYear() + "/" + (day.getMonth()+1) + "/" + day.getDate() + 
                               "</div>" +
                               "<div style='color:#000;'>" +
                                 item.series.label + tiptime +

@@ -1,8 +1,6 @@
-<tr>
-  <td><%=h status.state %></td>
-  <td><%=h status.continuous_num %></td>
-  <td><%=h status.num %></td>
-  <td><%=h status.score %></td>
-  <td><%=h status.average.to_s(:hm) if status.average %></td>
-  <td><%=h status.success_rate %></td>
-</tr>
+<tr><td>state</td><td><%=h status.state %></td></tr>
+<tr><td>continuous_num</td><td><%=h status.continuous_num %></td></tr>
+<tr><td>num</td><td><%=h status.num %></td></tr>
+<tr><td>score</td><td><%=h status.score %></td></tr>
+<tr><td>average</td><td><%=h status.average.to_s(:hm) if status.average %></td></tr>
+<tr><td>success_rate</td><td><%=h status.success_rate %></td></tr>

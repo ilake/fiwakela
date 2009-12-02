@@ -1,20 +1,3 @@
-<script>
-  function trigger_publish(){
-    var attachment = {
-      'media':[{'type':'image',
-        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
-        'href':'http://apps.facebook.com/iwakela'}],
-      'description' : 'Come to Iwakela to wake up together',
-      'caption' : 'My Diary'
-    };
-    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
-    FB.Connect.streamPublish('lala', attachment, actionLinks, null, 'Share your diary');
-  }
-
-  function lala(){
-    alert('lala');
-  }
-</script>
 <div>
   <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
   <%= link_to 'User Show', @user, :rel => "facebox"  %>
@@ -24,34 +7,22 @@
 </div>
 <div style='clear:both;'></div>
 <div id='content'>
-  <%= image_tag(@user.image) %> <%= @user.name %>'shome
+  <%= image_tag(@user.image) %> <%= @user.name %>
 
   <div id="show_graph">
     <%= render :partial => 'graph', :locals => {:times => @times, :target_times => @target_times} %>
   </div>
   <table>
-    <tr>
-      <th>state</th>
-      <th>continuous_num</th>
-      <th>num</th>
-      <th>score</th>
-      <th>average</th>
-      <th>success_rate</th>
-    </tr>
-
     <tbody id='status_list'>
       <%= render :partial => 'status', :locals => {:status => @user.status} %>
     </tbody>
   </table>
 
   <% owner_area do  %>
-    <%= link_to 'New record, Wake Up', new_record_path, :rel => "facebox"  %>
-    <%= link_to 'New record, 補上', new_record_path(:type => 'add'), :rel => "facebox"  %>
-    <a href='#' onclick="trigger_publish('kerker');return false;" >publish</a>
-    <a href='#' onclick="lala();return false;" >lala</a>
-    <a href='#' onclick="trigger_publish();return false;" >kerker</a>
+    <%= link_to image_tag('http://www.badongo.com/t/250/7945002.jpg', :size => '80x80'), new_record_path, :alt => 'Wake Up', :title =>'Wake Up', :rel => "facebox"  %>
+    <%= link_to image_tag('http://www.badongo.com/t/250/7944966.jpg', :size => '64x64'), new_record_path(:type => 'add'), :alt => 'add', :title => 'add', :rel => "facebox"  %>
   <% end%>
-
+  <div class='clear'></div>
   <%= render :partial => 'date_range' %>
 
   <table>
@@ -68,27 +39,15 @@
       <% end %>
     </tbody>
   </table>
-  <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 2,:showform => true, :title => "#{@user.name} Diary Comments" ) %>
+  <br />
+  <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 2,:showform => true, :title => "" ) %>
 </div>
 <div id='friend-list'>
   <% for friend in @friends %>
     <span>
       <%= link_to image_tag(friend.image), user_records_path(friend.id) %>
-      <%= friend[:last_record_time].to_s(:time) %>
       State: <%= friend.status.state %>
+      <%= friend[:last_record_time].to_s(:time) %>
     </span>
   <% end %>
 </div>
-<script>
-  function trigger_publish(content){
-    var attachment = {
-      'media':[{'type':'image',
-        'src':'http://s3.iconfinder.net//data/icons/twitterbirds/spritz_128.png',
-        'href':'http://apps.facebook.com/iwakela'}],
-      'description' : 'Come to Iwakela to wake up together',
-      'caption' : 'My Diary'
-    };
-    var actionLinks = [{ "text": "Wake up Early", "href": "http://apps.facebook.com/iwakela"}];
-    FB.Connect.streamPublish(content, attachment, actionLinks, null, 'Share your diary');
-  }
-</script>
