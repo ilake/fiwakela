@@ -1,21 +1,140 @@
+/* ~~~~~~~~~ Basic style ~~~~~~~~~~~~*/
+h2 {
+  font-size:138.5%;
+  color: #555;
+}
+
+h3 {
+  font-size:123.1%;
+  color: #555;
+}
+
+.fl-l {
+  float:left;
+}
+.fl-r {
+  float:right;
+}
+
 .clear {
   clear:both;
 }
+
+a:link, a:visited, a:active {
+  color: #1D1D1D;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #0033CC;
+  text-decoration: none;
+  background: transparent none repeat scroll 0 0;
+}
+
+a.button span{
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:transparent url(/images/merge.png) no-repeat;
+  background-position: 0px -96px;
+  display:block;
+  height:20px;
+  padding:5px 10px 0;
+  margin:0px 1px 0px 1px;
+  font-weight: bold;
+  text-align:center;
+}
+a.button {
+  color:#FFFFFF;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  font-size: 13px;
+  font-family: Helvetica,Arial,sans-serif;
+}
+/* ~~~~~~~~~~ FORM STYLE ~~~~~~~~~~ */
+
+#form {
+  margin-top :15px;
+  padding:5px;
+  background: #f4f4f4;
+}
+
+form label {
+    font-weight: bold;
+    line-height: 2;
+    color: #555;
+}
+
+form .text {
+    border: 1px #dcdcdc solid;
+    color: #999;
+}
+
+form .text:focus {
+    border: 1px #aaa solid;
+}
+
+form .submit {
+    background: #777;
+    border: 0;
+    padding: 2px 10px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    overflow: visible;
+}
+
+form .submit:hover {
+    background: #333;
+}
+
+/* ~~~~~~~ Friend style ~~~~~~~~*/
 #friend-list {
   overflow-x: hidden;
   float: left;
   width: 120px;
   height: 680px;
-  border: 1px solid #CACACA;
-  padding-left:1px;
-  padding-top:1px;
+  padding-left:2px;
+  padding-top:2px;
 }
 
+#friend-cell {
+  width: 130px;
+  margin:6px 0px 3px 0px;
+  border-bottom: 1px #ddd dotted;
+  padding: 2px;
+}
+
+.bulb {
+  background-image :url(/images/merge.png);
+  background-repeat: no-repeat;
+  width:48px;
+  height:48px;
+  display:block;
+  float:left;
+}
+
+.green-light {
+  background-position: 0px 0px;
+  width:48;
+}
+.red-light {
+  background-position: 0px -48px;
+}
+.black-light {
+  background-position: -48px -48px;
+}
+.empty-light {
+  background-position: -47px 0px;
+}
+
+
+/* ~~~~~~~ Content style ~~~~~~~~*/
 #content {
   float: right;
-  width: 600px;
-  border: 1px solid #CACACA;
-  padding:1px;
+  width: 620px;
+  padding:3px;
 }
 
 #container {
@@ -27,6 +146,157 @@
   float:right;
 }
 
-#status_list {
+#date_range {
+  float:right;
+  display:block;
+}
+
+.record-cell {
+  border-top:1px solid #EEEEEE;
+  color:#808080;
+  padding:8px 0px 8px 10px;
+}
+
+#action-menu {
+  background:#EEEEEE none repeat scroll 0 0;
+  border:1px solid #CCCCCC;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:3px;
+  height:26px;
+}
+
+.record-action {
+  display: none;
+  float:right;
+  color: #000;
+  font-weight:bold;
+}
+
+.record-content{
+  color: #333333;
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+}
+
+.record-info {
+  display:none;
+}
+
+.record-img {
+  background-image :url(/images/merge.png);
+  background-repeat: no-repeat;
+  width:16px;
+  height:16px;
   float:left;
+}
+
+.green-flag {
+  background-position: -95px -1px;
+}
+.yellow-flag {
+  background-position: -96px -18px;
+}
+
+.success-symbol{
+  background-position: -96px -34px;
+}
+.fail-symbol{
+  background-position: -96px -49px;
+}
+
+.pri-symbol{
+  background-position: -96px -65px;
+}
+
+#record-time {
+  float:left;
+  margin-right:5px;
+  display:block;
+  color:#000;
+  font-weight:bold;
+  height:20px;
+}
+
+#record-target {
+  color: #AA5511;
+  font-size: 13px;
+}
+
+#fb-comment {
+  margin-top:50px;
+}
+
+/* ~~~~~~~~ Top Menu style ~~~~~~~~~*/
+#top-menu {
+  margin-bottom:3px;
+  padding:3px;
+  border-bottom: 1px solid #E5ECF9;
+}
+
+#top-menu a{
+  color: #0033CC;
+  font-weight: bold;
+  text-decoration: none;
+}
+#top-menu a:hover {
+  text-decoration: underline;
+  background: transparent none repeat scroll 0 0;
+}
+
+/* ~~~~~~~~~ Status Style ~~~~~~~~~~ */
+#status_list {
+  margin-top:10px;
+  float:left;
+}
+
+#status_list tr {
+  display:table-row;
+  vertical-align:inherit;
+  color: #1D1D1D !important;
+}
+#status_list th {
+  padding-right:4px;
+  text-align:right;
+}
+
+#status_list td {
+  color: #555555;
+  font-size: 13px;
+  display: table-cell;
+  text-align:center;
+}
+
+#score-label {
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#score-value {
+  font-size: 30px;
+  font-weight: bold;
+  color: #00FF24;
+}
+
+#score-tip {
+  height:30px;
+}
+
+/* ~~~~~~~~~ Rank Style ~~~~~~~~~~ */
+#user-rank-no {
+  margin:10px;
+}
+
+.even {
+  background-color :#F4FBF3;
+}
+/* ~~~~~~~~~ Tip Style ~~~~~~~~~~ */
+a.tip {
+  color: #AA5511;
+  font-size: 13px;
+  cursor:help;
+}
+
+.fb-header {
+  margin-bottom:15px;
 }

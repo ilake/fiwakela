@@ -1,53 +1,92 @@
-<div>
-  <%= link_to 'Home', user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
-  <%= link_to 'User Show', @user, :rel => "facebox"  %>
-  <% owner_area do  %>
-    <%= link_to 'User Edit', edit_user_path(@user), :rel => "facebox" %>
-  <% end %>
-</div>
+<% content_for :js_rdy do %>
+  <script>
+
+    jQuery(document).ready(function($) {
+      $jq('.record-cell').hover(
+        function(){
+          $jq(this).find('.record-info').show();
+          $jq(this).addClass('even');
+        },
+        function(){
+          $jq(this).find('.record-info').hide();
+          $jq(this).removeClass('even');
+        }
+      );
+    })
+  </script>
+<% end %>
+<%= render :partial => 'index/top_menu' %>
+
 <div style='clear:both;'></div>
 <div id='content'>
-  <%= image_tag(@user.image) %> <%= @user.name %>
-
+  <%= fb_profile_pic(@user.fb_id)%>
+  <%= fb_name(@user.fb_id)%>
   <div id="show_graph">
     <%= render :partial => 'graph', :locals => {:times => @times, :target_times => @target_times} %>
   </div>
+
   <table>
     <tbody id='status_list'>
-      <%= render :partial => 'status', :locals => {:status => @user.status} %>
+      <%= render :partial => 'status', :locals => {:status => @user.status, :user => @user} %>
     </tbody>
   </table>
 
-  <% owner_area do  %>
-    <%= link_to image_tag('http://www.badongo.com/t/250/7945002.jpg', :size => '80x80'), new_record_path, :alt => 'Wake Up', :title =>'Wake Up', :rel => "facebox"  %>
-    <%= link_to image_tag('http://www.badongo.com/t/250/7944966.jpg', :size => '64x64'), new_record_path(:type => 'add'), :alt => 'add', :title => 'add', :rel => "facebox"  %>
-  <% end%>
   <div class='clear'></div>
-  <%= render :partial => 'date_range' %>
+  <div id='action-menu'>
+  <% owner_area do  %>
+      <%= link_to "<span>#{t('record.wakeup')}</span>", new_record_path, :alt => 'Wake Up', :title =>'Wake Up',
+      :rel => "facebox", :class => 'button fl-l'  %>
+      <%= link_to "<span>#{t('record.add')}</span>", new_record_path(:type => 'add'), :alt => 'add', :title => 'add',
+      :rel => "facebox", :class => 'button fl-l'  %>
+    <% end%>
+    <a href='#record-info' class='tip' rel='facebox'>[?]</a>
+    <div id='date_range'>
+    <%= render :partial => 'date_range' %>
+    </div>
+  </div>
 
-  <table>
-    <tr>
-      <th>Time</th>
-      <th>Content</th>
-      <th>Success</th>
-      <th>Status</th>
-    </tr>
-
-    <tbody id='record_list'>
-      <% @records.each do |record| %>
-        <%= render :partial => 'record', :locals => {:record => record}%>
-      <% end %>
-    </tbody>
-  </table>
-  <br />
-  <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 2,:showform => true, :title => "" ) %>
+  <div id='record_list'>
+    <% @records.each do |record| %>
+      <%= render :partial => 'record', :locals => {:record => record}%>
+    <% end %>
+  </div>
+  <div id='fb-comment'>
+    <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 5,:showform => true, :title => "" ) %>
+  </div>
 </div>
 <div id='friend-list'>
+  <h2><%= t'friend.list'%></h2>
   <% for friend in @friends %>
-    <span>
-      <%= link_to image_tag(friend.image), user_records_path(friend.id) %>
-      State: <%= friend.status.state %>
-      <%= friend[:last_record_time].to_s(:time) %>
-    </span>
+    <div id='friend-cell'>
+      <div>
+        <%= link_to image_tag(friend.image), user_records_path(friend.id), :class => 'fl-l' %>
+        <%= friend_status(friend.status.state ) %>
+      </div>
+      <div class='clear'></div>
+      <div>
+        <%= link_to friend[:last_record_time].to_s(:time), user_records_path(friend.id), :alt => t('friend.status'), :title => t('friend.status') %>
+      </div>
+    </div>
+    <div class='clear'></div>
   <% end %>
+</div>
+
+<div id='score' style='display:none;'>
+  <h2 class='fb-header'>What is Score ?</h2>
+  <pre>
+    Score is count by the successful realtime record.
+    That is you and your friends sum,
+    So just invite your friends, and wake up earily together.
+
+    ps: Rank just show the user by the target time less than 8:00 AM
+  </pre>
+</div>
+<div id='record-info' style='display:none;'>
+  <h2 class='fb-header'>What is different from RealTime and Manual Record ?</h2>
+  <pre>
+    RealTime record is that  you click wake up button and 
+    doesn't modifiy this time anymore, and if you wake up earily that 
+    mean your record successful, and you will get one point.
+    But Manual record does not.
+  </pre>
 </div>

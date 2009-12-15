@@ -1,16 +1,18 @@
-<h1>Editing user</h1>
+<h2>Editing Setting</h2>
 
+<div id='form'>
 <% form_for(@user) do |f| %>
-  <p>
-    <%= f.label :target_time %><br />
-    <%= select_hour @user.target_time || Time.now %>:
-    <%= select_minute @user.target_time || Time.now %>
-  </p>
   <p>
     <%= f.label :timezone %><br />
     <%= f.time_zone_select :timezone, nil%>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.label :target_time %><br />
+    <%= select_hour @user.target_time || Time.now %>:
+    <%= select_minute @user.target_time || Time.now %>
+  </p><br />
+  <p>
+    <%= f.submit 'Update', :class => 'submit' %>
   </p>
 <% end %>
+</div>

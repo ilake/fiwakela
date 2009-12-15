@@ -1,0 +1,38 @@
+<%= render :partial => 'index/top_menu' %>
+<% form_tag :action => 'index', :method => :get do %>
+  <%= t'user.timezone'%>: 
+  <select name='timezone'>
+    <%= time_zone_options_for_select @timezone %>
+  </select>
+  <%= t'rank.tet'%>: <%= select_hour @target_time %>:
+  <%= submit_tag t('rank.submit'), :class => 'submit' %>
+<% end %>
+
+<% if @user.timezone == @timezone && @user.target_time < @target_time%>
+<div id='user-rank-no'>
+  <h2><%= t'rank.uri'%>: <%= @rank.ordinalize %></h2>
+</div>
+<% end %>
+<table id='ranks-list'>
+  <thead>
+    <th style='width: 20px;'></th>
+    <th style='width: 40px;'></th>
+    <th style='width: 170px;'><%= t'user.name'%></th>
+    <th style='width: 100px;'><%= t'status.score'%></th>
+  </thead>
+  <tbody>
+  <% @users.each_with_index do |user, i| %>
+    <tr class="<%= cycle('even', 'odd') %>">
+      <td style='color:#000000; font-size:16px; font-weight:bold;'><%= i+1 %></td>
+      <td>
+        <%= link_to image_tag(user.image), "http://www.facebook.com/profile.php?id=#{user.fb_id}", :target => '_blank' %>
+      </td>
+      <td>
+        <%= link_to user.name, "http://www.facebook.com/profile.php?id=#{user.fb_id}", :target => '_blank' %>
+      </td>
+      <td><%= user.status.total_score %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20091129152625
+# Schema version: 20091209230600
 #
 # Table name: users
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  fb_id       :string(255)
 #  target_time :datetime
 #  created_at  :datetime
@@ -22,7 +22,9 @@ class User < ActiveRecord::Base
   after_create :create_default_user_setting
 
   named_scope :unactived, :include => :status, :conditions => ["statuses.state <> ? AND statuses.state <> ? AND statuses.state <> ?", 1, 2, 4]
+  named_scope :actived, :include => :status, :conditions => {:statuses => {:state => [1, 2]}}
 
+  named_scope :timezone_in, lambda{|zones| {:conditions => {:timezone => zones}}}
 #  status = Status.content_columns.inject([]) do |result, column|
 #    result << column.name
 #  end.push(:to => :status)

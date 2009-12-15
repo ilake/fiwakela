@@ -16,6 +16,8 @@ class RecordsController < ApplicationController
 
     friends = @current_facebook_user.friends_with_this_app
     friend_ids = friends.map(&:id)
+    session[:friend_ids] ||= friend_ids
+
     @friends = []
     friend_ids.each do |friend|
       user = User.find_by_fb_id(friend.to_s)
@@ -23,7 +25,7 @@ class RecordsController < ApplicationController
       @friends << user
     end
 
-    @friends.sort{|f1, f2| f1[:last_record_time] <=> f2[:last_record_time]}
+    @friends.sort!{|f1, f2| f2[:last_record_time] <=> f1[:last_record_time]}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,13 +69,20 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
+        @user.status.cal_total_score(session[:friend_ids])
+
         flash[:notice] = 'Record was successfully created.'
         format.html { redirect_to(@record) }
         format.xml  { render :xml => @record, :status => :created, :location => @record }
         format.js
       else
+        flash[:notice] = 'Record was created fail.'
         format.html { render :action => "new" }
         format.xml  { render :xml => @record.errors, :status => :unprocessable_entity }
+        format.js   { render :update do |page| 
+          page.call(:alert, @record.errors.full_messages.join(','))
+        end
+        }
       end
     end
   end
@@ -85,6 +94,8 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.update_attributes(params[:record])
+        @user.status.cal_total_score(session[:friend_ids])
+
         flash[:notice] = 'Record was successfully updated.'
         format.html { redirect_to(@record) }
         format.xml  { head :ok }
@@ -101,6 +112,7 @@ class RecordsController < ApplicationController
   def destroy
     @record = @user.records.find(params[:id])
     @record.destroy
+    @user.status.cal_total_score(session[:friend_ids])
 
     respond_to do |format|
       format.html { redirect_to(records_url) }
@@ -111,7 +123,7 @@ class RecordsController < ApplicationController
 
   private
   def get_date_range
-    @startDate = params[:startDate] ||= Time.zone.now.at_beginning_of_day.ago(3.days).to_s(:date)
+    @startDate = params[:startDate] ||= Time.zone.now.at_beginning_of_day.ago(7.days).to_s(:date)
     @endDate = params[:endDate] ||=Time.zone.now.at_beginning_of_day.to_s(:date)
   end
 

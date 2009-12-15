@@ -36,6 +36,6 @@ class UsersController < ApplicationController
   def set_target_time
     Time.zone = params[:user][:timezone]
     now = Time.zone.now
-    params[:user][:target_time] = Time.zone.local(now.year, now.month, now.day, params[:date][:hour], params[:date][:minute], 0)
+    params[:user][:target_time] = Time.zone.local(1982, 1, 8, params[:date][:hour], params[:date][:minute], 0)
   end
 end

@@ -1,0 +1,10 @@
+<div id="top-menu">
+  <%= link_to t('common.home'), user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
+  <%= link_to t('common.rank'), ranks_url %>
+  <% owner_area do  %>
+    <%= link_to t('common.setting'), edit_user_path(@user), :rel => "facebox" %>
+    <%= link_to 'Invite', friend_url %>
+  <% end %>
+  | 
+  <a href='http://www.facebook.com/apps/application.php?id=133258073504' target='_blank'><%= t'common.fanspage'%></a>
+</div>

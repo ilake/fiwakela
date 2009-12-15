@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= @user.name %>的早起生活</title>
-  <%= stylesheet_link_tag 'scaffold', 'facebox', 'record' %>
+  <%= stylesheet_link_tag 'scaffold', 'facebox', 'record', 'reset' %>
   <%= yield :page_specific %>
   <%= javascript_include_tag :defaults%>
 </head>
@@ -22,9 +22,9 @@
 
   });
 </script>
-  <div id='container'>
-    <%= yield %>
-  </div>
+<div id='container'>
+  <%= yield %>
+</div>
 
   <!--[if IE]><script language="javascript" type="text/javascript" src="/javascripts/excanvas.min.js"></script><![endif]-->
 <%= javascript_include_tag 'jquery', 'facebox', 'jquery.flot.min'%>
@@ -34,14 +34,26 @@
     $jq('#'+ r_id + ' a[rel*=facebox]').facebox();
   }
 
+  function binding_hover(r_id){
+    $jq('#'+ r_id).hover(
+      function(){
+        $jq(this).find('.record-info').show();
+        $jq(this).addClass('even');
+      },
+      function(){
+        $jq(this).find('.record-info').hide();
+        $jq(this).removeClass('even');
+      }
+    );
+  }
+
   jQuery(document).ready(function($) {
     $jq('a[rel*=facebox]').facebox();
-  })
+  });
 
   function close_facebox(){
     jQuery(document).trigger('close.facebox');
   }
-
 </script> 
 <%= yield :js_rdy %>
 </body>

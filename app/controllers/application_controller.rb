@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   ensure_authenticated_to_facebook
   before_filter :setup_facebook_user
+  before_filter :set_locale
   before_filter :set_timezone
   
   private
@@ -31,6 +32,14 @@ class ApplicationController < ActionController::Base
         @me = @user
       end
     end
+  end
+  
+  def set_locale
+    I18n.locale = if session[:locale]
+                   session[:locale]
+                 elsif AVAILABLE_LOCALES.include?(@current_facebook_user.locale)
+                   session[:locale] = @current_facebook_user.locale
+                 end
   end
 
   def set_timezone

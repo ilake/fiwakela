@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 20091129152625
+# Schema version: 20091209230600
 #
 # Table name: users
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  fb_id       :string(255)
 #  target_time :datetime
 #  created_at  :datetime

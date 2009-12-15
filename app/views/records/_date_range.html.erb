@@ -4,7 +4,7 @@
 
 <% content_for :js_rdy do %>
   <%= javascript_include_tag 'datepicker/jquery-datepicker.min.js' %>
-  <%= javascript_include_tag 'datepicker/i18n/ui.datepicker-zh-TW.js' %>
+  <%= datepicker_css %>
 
   <script type='text/javascript'>
     $jq(function() {
@@ -14,7 +14,7 @@
   </script>
 <% end %>
 <% form_tag records_path, :method => :get do %>
-  <%= text_field_tag :startDate, @startDate %>
-  <%= text_field_tag :endDate, @endDate %> 
-  <%= submit_tag 'submit' %>
+  <%= text_field_tag :startDate, @startDate, :size => 15 %>
+  <%= text_field_tag :endDate, @endDate, :size => 15 %> 
+  <%= submit_tag t('record.trange'), :class => 'submit' %>
 <% end %>

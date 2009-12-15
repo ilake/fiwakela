@@ -10,7 +10,7 @@
 
 <p>
   <b>Content:</b>
-  <%=simple_format(@record.content) %>
+  <%= Sanitize.clean(full_format_content(@record.content),  Sanitize::Config::BASIC) %>
 </p>
 
 <p>

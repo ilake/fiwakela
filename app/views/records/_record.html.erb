@@ -1,14 +1,23 @@
-<tr id="record-<%= record.id %>">
-    <td><%=h record.time.to_s(:time) %></td>
-    <%#=h record.target_time.to_s(:hm) if record.target_time %>
+<div id="record-<%= record.id %>" class='record-cell'>
+  <div>
+    <h3>
+      <span id='record-time'><%= record_auth_img(record.pri) %><%=h record.time.to_s(:time) %></span>
+      <span id='record-target' class='record-info'><%= t'record.target'%>: <%=h record.target_time.to_s(:hm) if record.target_time %></span>
+      <%= record_status_img(record.status) %>
+      <%= record_result_img(record.success) %>
+      <span class='record-action record-info'>
+        <%= link_to t('record.edit'), edit_record_path(record), :rel => "facebox" %>
+        <%= link_to_remote t('record.destroy'), :url => record, :confirm => t('record.sure'), :method => :delete %>
+      </span>
+    </h3>
+  </div>
+  <div class='clear'></div>
+  <div class='record-content'>
     <% if record.pri && record.user != @me %>
-      <td>Secret</td>
+      Secret
     <% else %>
-      <td><%=simple_format(record.content) %></td>
+      <%= Sanitize.clean(full_format_content(record.content),  Sanitize::Config::BASIC) %>
     <% end %>
-    <td><%=h record.success %></td>
-    <td><%=h record.status %></td>
-    <td><%= link_to 'Edit', edit_record_path(record), :rel => "facebox" %></td>
-    <td><%= link_to_remote 'Destroy', :url => record, :confirm => 'Are you sure?', :method => :delete %></td>
-</tr>
-    <%#= link_to 'Show', record, :rel => "facebox"  %>
+  </div>
+</div>
+<div class='clear'></div>

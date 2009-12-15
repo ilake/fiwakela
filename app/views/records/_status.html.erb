@@ -1,6 +1,33 @@
-<tr><td>state</td><td><%=h status.state %></td></tr>
-<tr><td>continuous_num</td><td><%=h status.continuous_num %></td></tr>
-<tr><td>num</td><td><%=h status.num %></td></tr>
-<tr><td>score</td><td><%=h status.score %></td></tr>
-<tr><td>average</td><td><%=h status.average.to_s(:hm) if status.average %></td></tr>
-<tr><td>success_rate</td><td><%=h status.success_rate %></td></tr>
+<tr>
+  <th id='score-label'><%= t'status.score' %>:</th>
+  <td><span id='score-value'><%=h status.total_score %></span></td>
+</tr>
+<tr id='score-tip'>
+  <td><a href='#score' class='tip' rel='facebox'><%= t'tip.whscore'%></a></td>
+  <td></td>
+</tr>
+<tr>
+  <th><%= t'status.num'%>:</th>
+  <td><%=h status.num %></td>
+</tr>
+<tr>
+  <th><%= t'status.rate' %>:</th>
+  <td><%=h status.success_rate %></td>
+</tr>
+<tr>
+  <th><%= t'status.average' %>:</th>
+  <td><%=h status.average.to_s(:hm) if status.average %></td>
+</tr>
+<tr>
+  <th><%= t'status.cont'%>:</th>
+  <td><%=h status.continuous_num %></td>
+</tr>
+<tr>
+  <th><%= t'record.target'%>:</th>
+  <td><%=h user.target_time.to_s(:hm) if user.target_time %></td>
+</tr>
+
+<tr>
+  <th><%= t'user.timezone'%>:</th>
+  <td><%=h user.timezone %></td>
+</tr>

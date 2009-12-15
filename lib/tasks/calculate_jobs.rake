@@ -3,7 +3,9 @@ namespace :cal do
   task :performance => :environment do 
     #state 4 是太久沒來的, 每天在reset_all_state rake 裡做更新
     #只是缺席或請假的才算, 今天有來(state 1 or 2)的也不算
-    User.unactived.each do |user|
+    
+    @timezone_now ||= timezone_now
+    User.unactived.timezone_in(@timezone_now).each do |user|
       status  = user.status
 
       #下面算績效的統一做
@@ -20,7 +22,9 @@ namespace :cal do
     #最近一星期 fight 設成false, state 設成4
     #今天有來(state = 1 or 2)
     #反正只是缺席或請假的才算
-    User.unactived.each do |u|
+    
+    @timezone_now ||= timezone_now
+    User.unactived.timezone_in(@timezone_now).each do |u|
       if r = u.records.order_by('time').first
         unless r.time > Time.now.ago(1.week)
           u.status.update_attribute(:state, 4)
@@ -32,7 +36,10 @@ namespace :cal do
       end
     end
 
-    Status.update_all("state = 0", "state <> 4")
+    User.actived.timezone_in(@timezone_now).each do |u|
+      u.status.update_attributes(:state => 0)
+    end
+    #Status.update_all("state = 0", "state <> 4")
   end
 
   desc 'daily_jobs'
@@ -51,20 +58,43 @@ namespace :cal do
     if h < 12
       h = h*-1
     elsif h > 13
-      h = 25 -h
+      h = 24 -h
     end
+
     #h is the timezone need to reset
-    zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
-    Time.zone = zones[0][0]
-    RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.utc_offset.to_utc_offset_s} )~~~#{Time.zone.now}~~~~#{zones.inspect}~~~")
-
-    if h == -11
-      h = 13
-      zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
+    if h != 13
+      zones = ActiveSupport::TimeZone::ZONES.map{|t|Time.zone = t; [t.name, t.formatted_offset, Time.zone.now.to_s(:fulltime)] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
       Time.zone = zones[0][0]
-      RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.utc_offset.to_utc_offset_s} )~~~#{Time.zone.now}~~~~#{zones.inspect}~~~")
+      RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.formatted_offset} )~~~~~#{zones.inspect}~~~")
 
+      if h == -11
+        h = 13
+        zones = ActiveSupport::TimeZone::ZONES.map{|t| [t.name, t.utc_offset.to_utc_offset_s, Time.zone.now.to_s(:fulltime)] if t.utc_offset/3600.0 < h+1 && t.utc_offset/3600.0 >= h}.compact
+        Time.zone = zones[0][0]
+        RAILS_DEFAULT_LOGGER.info("TIMEZONE~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.utc_offset.to_utc_offset_s} )~~~~~~#{zones.inspect}~~~")
+      end
     end
+
   end
 
+end
+
+def timezone_now
+  h = Time.now.utc.hour 
+  if h < 12
+    symbol = 'MINUS'
+  elsif h > 13
+    h = 24 -h
+    symbol = 'PLUS'
+  end
+
+  timezones = Object.const_get("TIMEZONE_#{symbol}_#{h}")
+
+  if h == -11
+    timezones << TIMEZONE_PLUS_13
+    timezones!
+  end
+  Time.zone = timezones[0]
+  RAILS_DEFAULT_LOGGER.info("TIMEZONE2~~#{Time.now.utc}~~~~( #{h} )~~~~( #{Time.zone.formatted_offset} )~~~~~~#{timezones.inspect}~~~")
+  timezones
 end

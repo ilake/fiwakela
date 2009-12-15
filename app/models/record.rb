@@ -1,16 +1,16 @@
 # == Schema Information
-# Schema version: 20091117232026
+# Schema version: 20091209230600
 #
 # Table name: records
 #
-#  id          :integer         not null, primary key
+#  id          :integer(4)      not null, primary key
 #  time        :datetime
 #  target_time :datetime
 #  content     :text
-#  user_id     :integer
-#  success     :boolean         default(TRUE)
-#  pri         :boolean
-#  status      :boolean         default(TRUE)
+#  user_id     :integer(4)
+#  success     :boolean(1)      default(TRUE)
+#  pri         :boolean(1)
+#  status      :boolean(1)      default(TRUE)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -26,6 +26,8 @@ class Record < ActiveRecord::Base
   before_update :modified_record_state, :if => Proc.new{|record| record.time_changed?}
   before_update :set_success, :if => Proc.new {|record| record.time_changed? }
 
+  named_scope :unrealtime, :conditions => {:status => false}
+  named_scope :realtime, :conditions => {:status => true}
   named_scope :success, :conditions => {:success => true}
   named_scope :fail, :conditions => {:success => false}
   named_scope :order_by, lambda{|cond|
@@ -37,6 +39,14 @@ class Record < ActiveRecord::Base
     end
   }
   named_scope :time_in, lambda{|start, endtime|{:conditions => ["time > ? AND time < ?", Time.zone.parse(start), Time.zone.parse(endtime).end_of_day]}}
+
+  named_scope :time2_in, lambda{|start, endtime|{:conditions => ["time > ? AND time < ?", start, endtime]}}
+
+
+  def validate_on_create
+    errors.add_to_base("You already had record int this day") if self.user.records.time2_in(self.time.beginning_of_day, self.time.end_of_day).count >= 1
+    errors.add_to_base("You can't create record in the future") if self.time > Time.zone.now
+  end
 
   def set_target_time
     self.target_time ||= self.create_target_time(self.user)
@@ -144,12 +154,16 @@ class Record < ActiveRecord::Base
   #只算最近21筆紀錄, 來算分數
   #最近21天的成功次數有多少
   def self.cal_score
-    #success_count = self.success.count(:all, :order => "id DESC", :conditions => "records.time > '#{Time.zone.now.ago(21.days).at_beginning_of_day.to_s(:db)}'")
+    #success_count = self.success.realtime.count(:all, :order => "id DESC", :conditions => "records.time > '#{Time.zone.now.ago(21.days).at_beginning_of_day.to_s(:db)}'")
     #For Heroku PostgreSQL db
-    success_count = self.success.find(:all, :order => "id DESC", :conditions => "records.time > '#{Time.zone.now.ago(21.days).at_beginning_of_day.to_s(:db)}'").size
-    total_score = success_count*5
-    total_score = 100 if total_score > 100
-    total_score
+    #success_count = self.success.realtime.find(:all, :order => "id DESC", :conditions => "records.time > '#{Time.zone.now.ago(30.days).at_beginning_of_day.to_s(:db)}'").size
+    #total_score = success_count*5
+    success_count = self.success.realtime.count(:all, :order => "id DESC",
+                                                :conditions => ["records.time > ? ", Time.zone.now.ago(100.days).beginning_of_day])
+    #total_score = success_count
+    #total_score = 100 if total_score > 100
+    #total_score
+    success_count
   end
   
 
