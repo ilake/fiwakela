@@ -7,6 +7,8 @@
     rank: '排行榜'
     setting: '設定'
     fanspage: '粉絲頁'
+    invite: '邀請朋友'
+    apname: '早鳥'
   record:
     target: '目標'
     wake: '起床'
@@ -21,6 +23,8 @@
     success: '成功'
     fail: '失敗'
     pri: '私密紀錄(只有你能看到)'
+    exist: '你在這天已經有紀錄了'
+    future: '不能建立紀錄在未來'
   status:
     score: '積分'
     num: '次數'
@@ -37,6 +41,7 @@
     late: '晚起'
     early: '早起'
     status: '最後一次紀錄'
+    invite: '邀請你的朋友來使用早鳥'
   tip:
     whscore: '啥是積分?'
   rank:

@@ -42,7 +42,6 @@ Rails::Initializer.run do |config|
   config.i18n.default_locale = :en
 end
 
-require 'sanitize'
 
 ENV['TZ'] = 'Asia/Taipei'
 

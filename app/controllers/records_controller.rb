@@ -1,4 +1,5 @@
 class RecordsController < ApplicationController
+  require 'sanitize'
   include Common
   ensure_application_is_installed_by_facebook_user :only => :auth
 
@@ -103,6 +104,10 @@ class RecordsController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @record.errors, :status => :unprocessable_entity }
+        format.js   { render :update do |page| 
+          page.call(:alert, @record.errors.full_messages.join(','))
+        end
+        }
       end
     end
   end

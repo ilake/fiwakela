@@ -4,6 +4,8 @@
     rank: 'Rank'
     setting: 'Setting'
     fanspage: 'FansPage'
+    invite: 'Invite'
+    apname: 'EarlyBird'
   record:
     target: 'Target'
     wake: 'WakeUp'
@@ -19,6 +21,8 @@
     success: 'Successful'
     fail: 'Fail'
     pri: 'Private Record(Only be seen by you)'
+    exist: 'You already had record int this day'
+    future: "You can't create record in the future"
   status:
     score: 'Score'
     num: 'Amount'
@@ -35,6 +39,7 @@
     late: 'Late'
     early: 'Early'
     status: 'Last Record'
+    invite: 'Invite your friends'
   tip:
     whscore: 'What is score?'
   rank:
