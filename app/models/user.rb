@@ -35,4 +35,8 @@ class User < ActiveRecord::Base
   def create_default_user_setting
     self.create_status
   end
+
+  def see_rank_check(zone, time)
+    self.timezone == zone && (self.target_time && self.target_time < time)
+  end
 end

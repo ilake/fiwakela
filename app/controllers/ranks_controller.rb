@@ -13,6 +13,6 @@ class RanksController < ApplicationController
 
     @rank = User.count(:all, :include => :status,
                        :select => "users.timezone, users.target_time, statuses.total_score",
-                       :conditions => ["users.timezone = ? AND total_score > ? AND users.target_time < ?", @timezone, @user.status.total_score, @target_time]) + 1 if @user.timezone == @timezone && @user.target_time < @target_time 
+                       :conditions => ["users.timezone = ? AND total_score > ? AND users.target_time < ?", @timezone, @user.status.total_score, @target_time]) + 1 if @user.see_rank_check(@timezone, @target_time) 
   end
 end

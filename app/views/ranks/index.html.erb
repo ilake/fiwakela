@@ -8,7 +8,7 @@
   <%= submit_tag t('rank.submit'), :class => 'submit' %>
 <% end %>
 
-<% if @user.timezone == @timezone && @user.target_time < @target_time%>
+<% if @user.see_rank_check(@timezone, @target_time) %>
 <div id='user-rank-no'>
   <h2><%= t'rank.uri'%>: <%= @rank.ordinalize %></h2>
 </div>
