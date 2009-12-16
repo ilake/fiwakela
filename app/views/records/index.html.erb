@@ -51,7 +51,7 @@
     <% end %>
   </div>
   <div id='fb-comment'>
-    <%= fb_comments( "iwakela_#{@user.fb_id}", true, true, 5,:showform => true, :title => "" ) %>
+    <%= fb_comments( "#{RAILS_ENV}_iwakela_#{@user.fb_id}", true, true, 5,:showform => true, :title => "" ) %>
   </div>
 </div>
 <div id='friend-list'>
