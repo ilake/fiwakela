@@ -39,7 +39,7 @@ production:
   api_key: 3f75946e607f90c4643025f212d612c7
   secret_key: 4955eef6d8c07636f945b926313f252a
   canvas_page_name: iwakeladev
-  callback_url: http://yhd.icetech.com.tw:21504
+  callback_url: http://yhd.icetech.com.tw:21502
   set_asset_host_to_callback_url: false
   tunnel:
     public_host_username: 
