@@ -14,7 +14,7 @@
     wake: '起床'
     wakeup: '現在起床'
     add: '補上'
-    trange: '時間區間'
+    trange: '查詢'
     edit: '編輯'
     destroy: '刪除'
     sure: '您確定刪除此紀錄嗎？'
@@ -22,9 +22,17 @@
     manual: '補上'
     success: '成功'
     fail: '失敗'
-    pri: '私密紀錄(只有你能看到)'
     exist: '你在這天已經有紀錄了'
     future: '不能建立紀錄在未來'
+    time: '時間'
+    content: '內容'
+    pri: '私密(只有你能看到)'
+    create_realtime_record: '建立即時紀錄'
+    create_record: '建立紀錄'
+    edit_record: '編輯紀錄'
+    submit: '送出'
+    update: '更新'
+    secret: '私密內容'
   status:
     score: '積分'
     num: '次數'
@@ -33,7 +41,9 @@
     cont: '連續次數'
   user:
     timezone: '時區'
+    target: '目標起床時間'
     name: '名字'
+    editsetting: '編輯設定'
   friend:
     list: '朋友列表'
     absence: '沒到'
@@ -43,7 +53,12 @@
     status: '最後一次紀錄'
     invite: '邀請你的朋友來使用早鳥'
   tip:
-    whscore: '啥是積分?'
+    whscore: '什麼是積分?'
+    scoredesc: '<p>積分是用<b>即時且成功</b>紀錄去計算的, 是你加上你朋友的分數總和</p>
+    <p>所以邀請你的朋友一起早起吧.</p>'
+    recque: '即時和補上紀錄有什麼不同'
+    recdesc: '<p>即時紀錄是指你用"我起床了"按鈕產生的紀錄而且該時間沒經過修改</p>
+    <p>如果你的即時紀錄成功早起你將會得到一分該分將會累積到你的積分和你朋友的積分上, 但補上的紀錄則否</p>'
   rank:
     tet: '目標早於'
     uri: '你的名次是'

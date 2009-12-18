@@ -15,7 +15,7 @@
     })
   </script>
 <% end %>
-<%= render :partial => 'index/top_menu' %>
+<%= render :partial => 'index/top_menu', :locals => {:current_facebook_user => @current_facebook_user, :user => @user} %>
 
 <div style='clear:both;'></div>
 <div id='content'>
@@ -41,17 +41,17 @@
     <% end%>
     <a href='#record-info' class='tip' rel='facebox'>[?]</a>
     <div id='date_range'>
-    <%= render :partial => 'date_range' %>
+      <%= render :partial => 'date_range', :locals => {:startDate => @startDate, :endDate => @endDate} %>
     </div>
   </div>
 
   <div id='record_list'>
     <% @records.each do |record| %>
-      <%= render :partial => 'record', :locals => {:record => record}%>
+      <%= render :partial => 'record', :locals => {:record => record, :me => @me}%>
     <% end %>
   </div>
   <div id='fb-comment'>
-    <%= fb_comments( "#{RAILS_ENV}_iwakela_#{@user.fb_id}", false, true, 3, :title => "", :url => "http://apps.facebook.com/#{ENV['FACEBOOKER_RELATIVE_URL_ROOT']}" ) %>
+    <%= fb_comments( "#{RAILS_ENV}_iwakela_#{@user.fb_id}", false, true, 3, :title => "", :url => FB_APP_URL ) %>
   </div>
 </div>
 <div id='friend-list'>
@@ -72,21 +72,14 @@
 </div>
 
 <div id='score' style='display:none;'>
-  <h2 class='fb-header'>What is Score ?</h2>
-  <pre>
-    Score is count by the successful realtime record.
-    That is you and your friends sum,
-    So just invite your friends, and wake up earily together.
-
-    ps: Rank just show the user by the target time less than 8:00 AM
-  </pre>
+  <h2 class='fb-header'><%= t'tip.whscore'%></h2>
+  <div class='tip-content'>
+    <%= t'tip.scoredesc'%>
+  </div>
 </div>
 <div id='record-info' style='display:none;'>
-  <h2 class='fb-header'>What is different from RealTime and Manual Record ?</h2>
-  <pre>
-    RealTime record is that  you click wake up button and 
-    doesn't modifiy this time anymore, and if you wake up earily that 
-    mean your record successful, and you will get one point.
-    But Manual record does not.
-  </pre>
+  <h2 class='fb-header'><%= t'tip.recque'%></h2>
+  <div class='tip-content'>
+    <%= t'tip.recdesc'%>
+  </div>
 </div>

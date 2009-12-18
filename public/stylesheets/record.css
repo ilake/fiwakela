@@ -38,7 +38,7 @@ a.button span{
   background:transparent url(/images/merge.png) no-repeat;
   background-position: 0px -96px;
   display:block;
-  height:20px;
+  height:30px;
   padding:5px 10px 0;
   margin:0px 1px 0px 1px;
   font-weight: bold;
@@ -49,7 +49,7 @@ a.button {
   cursor:pointer;
   text-align:center;
   text-decoration:none;
-  font-size: 13px;
+  font-size: 16px;
   font-family: Helvetica,Arial,sans-serif;
 }
 /* ~~~~~~~~~~ FORM STYLE ~~~~~~~~~~ */
@@ -299,4 +299,8 @@ a.tip {
 
 .fb-header {
   margin-bottom:15px;
+}
+
+.tip-content {
+  color: #000;
 }

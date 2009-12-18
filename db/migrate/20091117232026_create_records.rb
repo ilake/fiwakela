@@ -11,6 +11,8 @@ class CreateRecords < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :records, :user_id
   end
 
   def self.down

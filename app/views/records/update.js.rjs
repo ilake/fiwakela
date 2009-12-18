@@ -1,4 +1,4 @@
-page.replace "record-#{@record.id}", :partial => 'record', :object => @record
+page.replace "record-#{@record.id}", :partial => 'record', :locals => {:record => @record, :me => @me}
 page.visual_effect :highlight, "record-#{@record.id}"
 page.call(:close_facebox)
 page.replace_html "status_list", :partial => 'status', :locals => {:status => @user.status, :user => @user}

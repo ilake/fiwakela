@@ -1,8 +1,8 @@
 <div id="top-menu">
-  <%= link_to t('common.home'), user_records_path(User.find_by_fb_id(@current_facebook_user.id.to_s)) %>
+  <%= link_to t('common.home'), user_records_path(User.find_by_fb_id(current_facebook_user.id.to_s)) %>
   <%= link_to t('common.rank'), ranks_url %>
   <% owner_area do  %>
-    <%= link_to t('common.setting'), edit_user_path(@user), :rel => "facebox" %>
+    <%= link_to t('common.setting'), edit_user_path(user), :rel => "facebox" %>
   | 
     <%= link_to t('common.invite'), friend_url %>
   <% end %>

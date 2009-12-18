@@ -1,13 +1,4 @@
 class UsersController < ApplicationController
-  # GET /records/1
-  # GET /records/1.xml
-  def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @record }
-    end
-  end
-
   def edit
     respond_to do |format|
       format.html # show.html.erb
@@ -23,11 +14,9 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
         format.html { redirect_to records_path }
-        format.xml  { head :ok }
         format.js
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @record.errors, :status => :unprocessable_entity }
       end
     end
   end

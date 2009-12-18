@@ -1,4 +1,4 @@
-<%= render :partial => 'index/top_menu' %>
+<%= render :partial => 'index/top_menu', :locals => {:current_facebook_user => @current_facebook_user, :user => @user} %>
 <% form_tag :action => 'index', :method => :get do %>
   <%= t'user.timezone'%>: 
   <select name='timezone'>
@@ -8,7 +8,7 @@
   <%= submit_tag t('rank.submit'), :class => 'submit' %>
 <% end %>
 
-<% if @user.see_rank_check(@timezone, @target_time) %>
+<% if @watch_rank %>
 <div id='user-rank-no'>
   <h2><%= t'rank.uri'%>: <%= @rank.ordinalize %></h2>
 </div>

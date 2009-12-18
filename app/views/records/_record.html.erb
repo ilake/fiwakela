@@ -13,8 +13,8 @@
   </div>
   <div class='clear'></div>
   <div class='record-content'>
-    <% if record.pri && record.user != @me %>
-      Secret
+    <% if record.check_watcher(me) %>
+      <%= t'record.secret'%>
     <% else %>
       <%= Sanitize.clean(full_format_content(record.content),  Sanitize::Config::BASIC) %>
     <% end %>

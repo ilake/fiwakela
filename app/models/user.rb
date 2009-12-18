@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
   named_scope :actived, :include => :status, :conditions => {:statuses => {:state => [1, 2]}}
 
   named_scope :timezone_in, lambda{|zones| {:conditions => {:timezone => zones}}}
+  named_scope :target_less_than, lambda{|time| {:conditions => ["users.target_time < ?", time]}}
+  named_scope :order_by_score, :include => :status, :order => "statuses.total_score DESC"
+  named_scope :in_limit, lambda{|num| {:limit => num}}
+  named_scope :score_higher_than, lambda{|score| {:include => :status, :conditions => ["statuses.total_score > ?",score]}}
+
 #  status = Status.content_columns.inject([]) do |result, column|
 #    result << column.name
 #  end.push(:to => :status)

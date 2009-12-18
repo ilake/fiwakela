@@ -12,7 +12,7 @@
     num: 'Number'
     wakeup: 'Wake Up'
     add: 'Add'
-    trange: 'Time Range'
+    trange: 'Query'
     edit: 'Edit'
     destroy: 'delete'
     sure: 'Are you sure？'
@@ -20,9 +20,17 @@
     manual: 'Manual'
     success: 'Successful'
     fail: 'Fail'
-    pri: 'Private Record(Only be seen by you)'
     exist: 'You already had record int this day'
     future: "You can't create record in the future"
+    time: 'Time'
+    content: 'Content'
+    pri: 'Private(only be seen by yourself)'
+    create_realtime_record: 'Creating real time record'
+    create_record: 'Creating record'
+    edit_record: 'Editing record'
+    submit: 'Submit'
+    update: 'Update'
+    secret: 'Secret Content'
   status:
     score: 'Score'
     num: 'Amount'
@@ -31,7 +39,9 @@
     cont: 'Continuous times'
   user:
     timezone: 'Timezone'
+    target: 'Wake Up Target Time'
     name: 'Name'
+    editsetting: 'Editing setting'
   friend:
     list: 'Friend list'
     absence: 'Absence'
@@ -42,6 +52,14 @@
     invite: 'Invite your friends'
   tip:
     whscore: 'What is score?'
+    scoredesc: '<p>Score is calcuated by the <b>successful and real time </b>record.
+    That is total you add your friends score total.</p>
+    <p>So just invite your friends, and wake up earily together.</p>'
+    recque: 'What is different from RealTime and Manual Record ?'
+    recdesc: "<p>Real Time record is that you click wake up button and 
+      doesn't modifiy this time anymore</p>
+    <p>If you wake up earily that mean your record is successful, and you will get one point.
+      But Manual record does not.</p>"
   rank:
     tet: 'TargetTime early than'
     uri: 'Your Rank is'

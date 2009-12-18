@@ -3,6 +3,8 @@ class RecordsController < ApplicationController
   include Common
   ensure_application_is_installed_by_facebook_user :only => :auth
 
+  before_filter :find_record, :only => [:show, :edit, :update, :destroy]
+
   def auth
     redirect_to :action => 'index', :status => 301
   end
@@ -38,8 +40,6 @@ class RecordsController < ApplicationController
   # GET /records/1
   # GET /records/1.xml
   def show
-    @record = @user.records.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @record }
@@ -60,7 +60,6 @@ class RecordsController < ApplicationController
 
   # GET /records/1/edit
   def edit
-    @record = @user.records.find(params[:id])
   end
 
   # POST /records
@@ -74,12 +73,10 @@ class RecordsController < ApplicationController
 
         flash[:notice] = 'Record was successfully created.'
         format.html { redirect_to(@record) }
-        format.xml  { render :xml => @record, :status => :created, :location => @record }
         format.js
       else
         flash[:notice] = 'Record was created fail.'
         format.html { render :action => "new" }
-        format.xml  { render :xml => @record.errors, :status => :unprocessable_entity }
         format.js   { render :update do |page| 
           page.call(:alert, @record.errors.full_messages.join(','))
         end
@@ -91,7 +88,6 @@ class RecordsController < ApplicationController
   # PUT /records/1
   # PUT /records/1.xml
   def update
-    @record = @user.records.find(params[:id])
 
     respond_to do |format|
       if @record.update_attributes(params[:record])
@@ -99,11 +95,9 @@ class RecordsController < ApplicationController
 
         flash[:notice] = 'Record was successfully updated.'
         format.html { redirect_to(@record) }
-        format.xml  { head :ok }
         format.js
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @record.errors, :status => :unprocessable_entity }
         format.js   { render :update do |page| 
           page.call(:alert, @record.errors.full_messages.join(','))
         end
@@ -115,7 +109,6 @@ class RecordsController < ApplicationController
   # DELETE /records/1
   # DELETE /records/1.xml
   def destroy
-    @record = @user.records.find(params[:id])
     @record.destroy
     @user.status.cal_total_score(session[:friend_ids])
 
@@ -130,6 +123,10 @@ class RecordsController < ApplicationController
   def get_date_range
     @startDate = params[:startDate] ||= Time.zone.now.at_beginning_of_day.ago(7.days).to_s(:date)
     @endDate = params[:endDate] ||=Time.zone.now.at_beginning_of_day.to_s(:date)
+  end
+
+  def find_record
+    @record = @user.records.find(params[:id])
   end
 
 end

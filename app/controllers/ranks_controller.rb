@@ -6,13 +6,8 @@ class RanksController < ApplicationController
 
     Time.zone = @timezone 
     @target_time = Time.zone.local(1982, 1, 8, @hour, 0, 0)
-    @users = User.find(:all, :include => :status,
-                       :select => "users.fb_id, users.target_time ,users.timezone, statuses.total_score",
-                       :conditions => ["users.timezone = ? AND users.target_time < ? ", @timezone, @target_time],
-                       :order => "statuses.total_score DESC", :limit => 20)
+    @users = User.timezone_in(@timezone).target_less_than(@target_time).order_by_score.in_limit(20).find(:all, :select => "users.fb_id, users.target_time ,users.timezone, statuses.total_score")
 
-    @rank = User.count(:all, :include => :status,
-                       :select => "users.timezone, users.target_time, statuses.total_score",
-                       :conditions => ["users.timezone = ? AND total_score > ? AND users.target_time < ?", @timezone, @user.status.total_score, @target_time]) + 1 if @user.see_rank_check(@timezone, @target_time) 
+    @rank = User.timezone_in(@timezone).target_less_than(@target_time).score_higher_than(@user.status.total_score).count(:all, :select => "users.timezone, users.target_time, statuses.total_score") + 1 if @watch_rank = @user.see_rank_check(@timezone, @target_time)
   end
 end

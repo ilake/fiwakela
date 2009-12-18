@@ -171,5 +171,8 @@ class Record < ActiveRecord::Base
     success_count
   end
   
+  def check_watcher(user)
+    self.pri && self.user != user
+  end
 
 end
