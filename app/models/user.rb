@@ -46,6 +46,6 @@ class User < ActiveRecord::Base
   end
 
   def is_rookie?
-    !(self.target_time.nil? || self.records.count < 2)
+    (self.target_time.nil? || self.records.count < 2)
   end
 end
