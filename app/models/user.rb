@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
   def see_rank_check(zone, time)
     self.timezone == zone && (self.target_time && self.target_time < time)
   end
+
+  def is_rookie?
+    !(self.target_time.nil? || self.records.count < 2)
+  end
 end

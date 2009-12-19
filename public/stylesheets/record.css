@@ -304,3 +304,44 @@ a.tip {
 .tip-content {
   color: #000;
 }
+
+/* ~~~~~~~~ Tutorial Style ~~~~~~~~~~~*/
+#tutorail {
+  padding:5px 10px 5px 10px;
+  display:block;
+  border: 2px solid #CCCCCC;
+  height:100px;
+  margin-bottom:20px;
+}
+
+#tutorail div.step{
+  width: 220px;
+  float:left;
+  margin: 0px 10px 0px 10px;
+  display:block;
+}
+#tutorail div.desc{
+  margin-top:5px;
+  font-size:14px;
+  color:#333333;
+  line-height:18px;
+}
+
+#tutorail div.desc a{
+  float:left;
+  font-size:14px;
+  color:#FFFFFF;
+  height:30px;
+  margin:0px 1px 0px 1px;
+  font-weight: bold;
+  text-align:center;
+}
+
+#tutorail a {
+  font-size:16px;
+  font-weight:bold;
+  color:#3B5998;
+  cursor:pointer;
+  outline-style:none;
+  text-decoration:none;
+}

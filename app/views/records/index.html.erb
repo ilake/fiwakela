@@ -15,6 +15,29 @@
     })
   </script>
 <% end %>
+<% owner_area do  %>
+  <% if @is_rookie %>
+    <div id='tutorail'>
+      <div class='step'>
+        <%= link_to t('tutorial.title1'), edit_user_path(@user), :rel => "facebox" %>
+        <div class='desc'><%= t'tutorial.desc1'%></div>
+      </div>
+      <div class='step'>
+        <a href='#'><%= t'tutorial.title2'%></a>
+        <div class='desc'>
+          <p><%= t'tutorial.desc2'%></p>
+          <%= link_to "<span>#{t('record.wakeup')}</span>", new_record_path, :alt => 'Wake Up', :title =>'Wake Up',
+            :rel => "facebox", :class => 'button fl-l'  %>
+            <%= link_to "<span>#{t('record.add')}</span>", new_record_path(:type => 'add'), :alt => 'add', :title => 'add', :rel => "facebox", :class => 'button fl-l'  %>
+          </div>
+        </div>
+        <div class='step'>
+          <a href='#'><%= t'tutorial.title3'%></a>
+          <div class='desc'><%= t'tutorial.desc3'%></div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 <%= render :partial => 'index/top_menu', :locals => {:current_facebook_user => @current_facebook_user, :user => @user} %>
 
 <div style='clear:both;'></div>

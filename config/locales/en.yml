@@ -54,16 +54,23 @@
     whscore: 'What is score?'
     scoredesc: '<p>Score is calcuated by the <b>successful and real time </b>record.
     That is total you add your friends score total.</p>
-    <p>So just invite your friends, and wake up earily together.</p>'
+    <p>So just invite your friends, and wake up early together.</p>'
     recque: 'What is different from RealTime and Manual Record ?'
     recdesc: "<p>Real Time record is that you click wake up button and 
       doesn't modifiy this time anymore</p>
-    <p>If you wake up earily that mean your record is successful, and you will get one point.
+    <p>If you wake up early that mean your record is successful, and you will get one point.
       But Manual record does not.</p>"
   rank:
     tet: 'TargetTime early than'
     uri: 'Your Rank is'
     submit: 'Query'
+  tutorial:
+    title1: "1. Set Target Time"
+    title2: "2. Wake up"
+    title3: "3. Review"
+    desc1: 'EarlyBird is a tool to record the time you wake up, so please set your target time in beginning'
+    desc2: 'Wake up and record it'
+    desc3: 'EarlyBird would calcuate your average time ...etc. To help you have the early habitus'
   date:
     formats:
       default: "%Y-%m-%d"

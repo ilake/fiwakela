@@ -11,6 +11,7 @@ class RecordsController < ApplicationController
   # GET /records
   # GET /records.xml
   def index
+    @is_rookie = @me.is_rookie? if @user == @me
     get_date_range
     @records = @user.records.time_in(@startDate, @endDate).order_by('time').all
     @record = Record.new
