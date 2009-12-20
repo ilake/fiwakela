@@ -2,6 +2,7 @@ class RecordsController < ApplicationController
   require 'sanitize'
   include Common
   ensure_application_is_installed_by_facebook_user :only => :auth
+  skip_before_filter :ensure_authenticated_to_facebook, :only => [:index]
 
   before_filter :find_record, :only => [:show, :edit, :update, :destroy]
 
@@ -70,8 +71,9 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        @user.status.cal_total_score(session[:friend_ids])
-
+        status = @user.status
+        status.cal_total_score(session[:friend_ids])
+        @status_partial = "#{t('status.score')}:#{status.total_score},"
         flash[:notice] = 'Record was successfully created.'
         format.html { redirect_to(@record) }
         format.js

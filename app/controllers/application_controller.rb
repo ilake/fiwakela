@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :setup_facebook_user
   before_filter :set_locale
   before_filter :set_timezone
+
   
   private
   def setup_facebook_user
