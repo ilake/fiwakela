@@ -62,7 +62,7 @@
       <%= link_to "<span>#{t('record.add')}</span>", new_record_path(:type => 'add'), :alt => 'add', :title => 'add',
       :rel => "facebox", :class => 'button fl-l'  %>
     <% end%>
-    <a href='#record-info' class='tip' rel='facebox'>[?]</a>
+    <a href='#record-info' class='tip fl-l' rel='facebox'>[?]</a>
     <div id='date_range'>
       <%= render :partial => 'date_range', :locals => {:startDate => @startDate, :endDate => @endDate} %>
     </div>
