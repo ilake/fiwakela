@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
       unless session[:user]      
         #if @user = User.find_or_initialize_by_fb_id(@current_facebook_user.uid.to_s)
         if @user = User.find_or_initialize_by_fb_id(session[:current_facebook_user_id])
-          @user.name = @current_facebook_user.name
-          @user.image = @current_facebook_user.pic_square
+          @user.name = @current_facebook_user.name if @current_facebook_user
+          @user.image = @current_facebook_user.pic_square if @current_facebook_user
           @user.save!
           @me = @user
           session[:user] = @user.id
