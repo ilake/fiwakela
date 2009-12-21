@@ -42,17 +42,21 @@
 
 <div style='clear:both;'></div>
 <div id='content'>
-  <%= fb_profile_pic(@user.fb_id)%>
-  <%= fb_name(@user.fb_id)%>
+  <div class='fl-l'>
+    <div>
+      <%= fb_profile_pic(@user.fb_id)%>
+      <%= fb_name(@user.fb_id)%>
+    </div>
+    <table>
+      <tbody id='status_list'>
+        <%= render :partial => 'status', :locals => {:status => @user.status, :user => @user} %>
+      </tbody>
+    </table>
+  </div>
   <div id="show_graph">
     <%= render :partial => 'graph', :locals => {:times => @times, :target_times => @target_times} %>
   </div>
 
-  <table>
-    <tbody id='status_list'>
-      <%= render :partial => 'status', :locals => {:status => @user.status, :user => @user} %>
-    </tbody>
-  </table>
 
   <div class='clear'></div>
   <div id='action-menu'>

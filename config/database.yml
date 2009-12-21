@@ -22,12 +22,9 @@
 #  timeout: 5000
 development:
   adapter: mysql
-#  database: fb_dev
-#  username: root
-#  password:
-  database: fb_pro
+  database: fb_dev
   username: root
-  password: hiroot
+  password:
   host: localhost
   encoding: utf8
 

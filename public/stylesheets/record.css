@@ -68,11 +68,11 @@ form label {
 
 form .text {
     border: 1px #dcdcdc solid;
-    color: #999;
+    color: #000000;
 }
 
 form .text:focus {
-    border: 1px #aaa solid;
+    border: 1px #F8BA01  solid;
 }
 
 form .submit {

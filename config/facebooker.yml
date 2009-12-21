@@ -9,14 +9,10 @@
 # This should only be necessary until the final version of the new profile is released.
 
 development:
-#  api_key: 67e7091533f2616620e062794b957625
-#  secret_key: c4dcdf5990c5b13f1e1a2d121709d4b4
-#  canvas_page_name: iwakela
-#  callback_url: http://localhost:3000
-  api_key: 3f75946e607f90c4643025f212d612c7
-  secret_key: 4955eef6d8c07636f945b926313f252a
-  canvas_page_name: iwakeladev
-  callback_url: http://yhd.icetech.com.tw:21502
+  api_key: 67e7091533f2616620e062794b957625
+  secret_key: c4dcdf5990c5b13f1e1a2d121709d4b4
+  canvas_page_name: iwakela
+  callback_url: http://localhost:3000
   pretty_errors: true
   set_asset_host_to_callback_url: false
   tunnel:
