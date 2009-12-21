@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  before_filter :set_p3p_header
   ensure_authenticated_to_facebook
   before_filter :setup_facebook_user
   before_filter :set_locale
@@ -49,5 +50,9 @@ class ApplicationController < ActionController::Base
 
   def set_timezone
     Time.zone = @user.timezone if @user.timezone
+  end
+
+  def set_p3p_header
+    response.headers['P3P'] = 'CP=CAO PSA OUR'
   end
 end
