@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = if session[:locale]
                    session[:locale]
-                 elsif AVAILABLE_LOCALES.include?(@current_facebook_user.locale)
+                 elsif @current_facebook_user && AVAILABLE_LOCALES.include?(@current_facebook_user.locale)
                    session[:locale] = @current_facebook_user.locale
                  end
   end
