@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   private
   def setup_facebook_user
     @current_facebook_user = facebook_session.user if facebook_session
-    session[:current_facebook_user_id] ||= @current_facebook_user.uid
+    session[:current_facebook_user_id] = @current_facebook_user.uid if @current_facebook_user
     if params[:user_id]
       @user = User.find(params[:user_id])
       @me = User.find_by_fb_id(@current_facebook_user.id)
