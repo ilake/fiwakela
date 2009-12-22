@@ -4,7 +4,7 @@
       <span id='record-time'><%= record_auth_img(record.pri) %><%=h record.time.to_s(:time) %></span>
       <%= record_status_img(record.status) %>
       <%= record_result_img(record.success) %>
-      <span id='record-target' class='record-info fl-l'><%= t'record.target'%>: <%=h record.target_time.to_s(:hm) if record.target_time %></span>
+      <span id='record-target' class='record-info'><%= t'record.target'%>: <%=h record.target_time.to_s(:hm) if record.target_time %></span>
       <% owner_area do  %>
         <span class='record-action record-info'>
           <%= link_to t('record.edit'), edit_record_path(record), :rel => "facebox" %>
