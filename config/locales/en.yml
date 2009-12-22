@@ -6,6 +6,9 @@
     fanspage: 'FansPage'
     invite: 'Invite'
     apname: 'EarlyBird'
+    life: "'s Early Life"
+    result: "Harvest"
+    action: 'Wake Up Early'
   record:
     target: 'Target'
     wake: 'WakeUp'
