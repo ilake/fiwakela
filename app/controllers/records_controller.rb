@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   require 'sanitize'
   include Common
   ensure_application_is_installed_by_facebook_user :only => :auth
-  skip_before_filter :ensure_authenticated_to_facebook, :except => [:index, :auth]
+  #skip_before_filter :ensure_authenticated_to_facebook, :except => [:index, :auth]
 
   before_filter :find_record, :only => [:show, :edit, :update, :destroy]
 

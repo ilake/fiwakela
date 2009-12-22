@@ -68,7 +68,7 @@
     <% end%>
     <a href='#record-info' class='tip fl-l' rel='facebox'>[?]</a>
     <div id='date_range'>
-      <%= render :partial => 'date_range', :locals => {:startDate => @startDate, :endDate => @endDate} %>
+      <%= render :partial => 'date_range', :locals => {:user => @user, :startDate => @startDate, :endDate => @endDate} %>
     </div>
   </div>
 
