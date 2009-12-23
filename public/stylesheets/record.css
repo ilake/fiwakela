@@ -52,6 +52,9 @@ a.button {
   font-size: 16px;
   font-family: Helvetica,Arial,sans-serif;
 }
+.alert-red, a.alert-red {
+  color:#C62B26;
+}
 /* ~~~~~~~~~~ FORM STYLE ~~~~~~~~~~ */
 
 #form {

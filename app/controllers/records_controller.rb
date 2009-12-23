@@ -68,7 +68,8 @@ class RecordsController < ApplicationController
       if @record.save
         status = @user.status
         status.cal_total_score(session[:friend_ids])
-        @status_partial = "#{t('status.score')}:#{status.total_score},
+        @status_partial = "#{t('record.wake')}:#{@record.time.to_s(:hm)},
+        #{t('status.score')}:#{status.total_score},
         #{t('status.num')}:#{status.num},
         #{t('status.rate')}:#{status.success_rate},
         #{t('status.average')}:#{status.average.to_s(:hm)},

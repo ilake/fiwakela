@@ -24,7 +24,7 @@
 </tr>
 <tr>
   <th><%= t'record.target'%>:</th>
-  <td><%=h user.target_time.to_s(:hm) if user.target_time %></td>
+  <td><%= target_time_status(user) %></td>
 </tr>
 
 <tr>
