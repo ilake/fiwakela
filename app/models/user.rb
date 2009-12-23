@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   named_scope :timezone_in, lambda{|zones| {:conditions => {:timezone => zones}}}
   named_scope :target_less_than, lambda{|time| {:conditions => ["users.target_time < ?", time]}}
   named_scope :order_by_score, :include => :status, :order => "statuses.total_score DESC"
+  named_scope :order_by_last_record, :include => :status, :order => "statuses.last_record_at DESC"
   named_scope :in_limit, lambda{|num| {:limit => num}}
   named_scope :score_higher_than, lambda{|score| {:include => :status, :conditions => ["statuses.total_score > ?",score]}}
 

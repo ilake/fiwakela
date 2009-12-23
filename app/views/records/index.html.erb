@@ -38,7 +38,7 @@
       </div>
     <% end %>
   <% end %>
-<%= render :partial => 'index/top_menu', :locals => {:current_facebook_user => @current_facebook_user, :user => @user} %>
+<%= render :partial => 'index/top_menu' %>
 
 <div style='clear:both;'></div>
 <div id='content'>
@@ -91,7 +91,7 @@
       </div>
       <div class='clear'></div>
       <div>
-        <%= link_to friend[:last_record_time].to_s(:time), user_records_path(friend.id), :alt => t('friend.status'), :title => t('friend.status') %>
+        <%= link_to last_record_status(friend), user_records_path(friend.id), :alt => t('friend.status'), :title => t('friend.status') %>
       </div>
     </div>
     <div class='clear'></div>

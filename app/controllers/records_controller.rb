@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   require 'sanitize'
   include Common
   ensure_application_is_installed_by_facebook_user :only => :auth
-  #skip_before_filter :ensure_authenticated_to_facebook, :except => [:index, :auth]
+  skip_before_filter :ensure_authenticated_to_facebook, :except => [:index, :auth]
 
   before_filter :find_record, :only => [:show, :edit, :update, :destroy]
 
@@ -19,18 +19,13 @@ class RecordsController < ApplicationController
     @times = Common.time_to_string(@records, 'time')
     @target_times = Common.time_to_string(@records, 'target_time')
 
-    friends = @current_facebook_user.friends_with_this_app
-    friend_ids = friends.map(&:id)
-    session[:friend_ids] ||= friend_ids
-
-    @friends = []
-    friend_ids.each do |friend|
-      user = User.find_by_fb_id(friend.to_s)
-      user[:last_record_time] = user.status.last_record_at ? user.status.last_record_at : Time.zone.local(2000)
-      @friends << user
+    unless session[:friend_ids]
+      friends = @current_facebook_user.friends_with_this_app
+      friend_ids = friends.map(&:id)
+      session[:friend_ids] ||= friend_ids
     end
 
-    @friends.sort!{|f1, f2| f2[:last_record_time] <=> f1[:last_record_time]}
+    @friends = User.order_by_last_record.find_all_by_fb_id(session[:friend_ids])
 
     respond_to do |format|
       format.html # index.html.erb

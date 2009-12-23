@@ -1,7 +1,7 @@
 module RecordsHelper
 
   def owner_area(&block)
-    if @user.fb_id == @current_facebook_user.id.to_s
+    if @user.fb_id == session[:current_facebook_user_id].to_s || @user.fb_id == @current_facebook_user.id.to_s
       concat capture(&block)
     end
   end
@@ -60,6 +60,14 @@ module RecordsHelper
   def datepicker_css
     unless session[:locale] == 'en'
       javascript_include_tag "datepicker/i18n/ui.datepicker-#{session[:locale]}.js"
+    end
+  end
+
+  def last_record_status(user)
+    if time = user.status.last_record_at
+      time.to_s(:time)
+    else
+      t('status.norecord')
     end
   end
 end

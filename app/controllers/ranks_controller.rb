@@ -1,4 +1,5 @@
 class RanksController < ApplicationController
+  skip_before_filter :ensure_authenticated_to_facebook
   layout 'records'
   def index
     @timezone = params[:timezone] ? params[:timezone] : @user.timezone

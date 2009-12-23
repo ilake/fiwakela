@@ -42,6 +42,7 @@
     rate: '成功率'
     average: '平均'
     cont: '連續次數'
+    norecord: '尚無紀錄'
   user:
     timezone: '時區'
     target: '目標起床時間'

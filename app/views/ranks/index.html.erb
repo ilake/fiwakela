@@ -1,4 +1,4 @@
-<%= render :partial => 'index/top_menu', :locals => {:current_facebook_user => @current_facebook_user, :user => @user} %>
+<%= render :partial => 'index/top_menu' %>
 <% form_tag :action => 'index', :method => :get do %>
   <%= t'user.timezone'%>: 
   <select name='timezone'>

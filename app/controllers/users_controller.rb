@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :ensure_authenticated_to_facebook
   def edit
     respond_to do |format|
       format.html # show.html.erb

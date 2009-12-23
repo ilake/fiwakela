@@ -40,6 +40,7 @@
     rate: 'Successful Rate'
     average: 'Average'
     cont: 'Continuous times'
+    norecord: 'No Record'
   user:
     timezone: 'Timezone'
     target: 'Wake Up Target Time'
