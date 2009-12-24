@@ -72,6 +72,6 @@ module RecordsHelper
   end
 
   def target_time_status(user)
-    user.target_time ? user.target_time.to_s(:hm) : link_to(t('common.setting'), edit_user_path(session[:user]), :rel => "facebox", :class => 'alert_red')
+    user.target_time ? user.target_time.to_s(:hm) : owner_area{link_to(t('common.setting'), edit_user_path(session[:user]), :rel => "facebox", :class => 'alert_red')}
   end
 end
