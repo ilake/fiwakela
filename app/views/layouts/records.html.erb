@@ -16,9 +16,15 @@
 
   <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
   <script type="text/javascript">
-    FB_RequireFeatures(["CanvasUtil"], function(){
+    FB_RequireFeatures(["CanvasUtil", "XFBML"], function(){
         FB.XdComm.Server.init("<%= FACEBOOKER['callback_url']%>/xd_receiver.htm");
         FB.CanvasClient.startTimerToSizeToContent();
+//        FB.ensureInit(function() {
+//          api = FB.Facebook.apiClient;
+//          var r = api.preloadFQL_get(function(result) {
+//            console.debug("preloadFQL_get callback", result);                    
+//          });
+//       });
 
   });
 </script>

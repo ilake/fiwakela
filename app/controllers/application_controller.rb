@@ -14,12 +14,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_timezone
   #before_filter :set_preload_fql
 
-  
   private
   def setup_facebook_user
     @current_facebook_user = facebook_session.user if facebook_session
     session[:current_facebook_user_id] ||= (params[:fb_sig_user] || @current_facebook_user.uid) if @current_facebook_user
-
 
     if params[:user_id]
       @user = User.find(params[:user_id])
@@ -60,12 +58,12 @@ class ApplicationController < ActionController::Base
 
   def set_preload_fql
     preload_fql = Hash.new
-    preload_fql[:preload_user_permission] = {
+    preload_fql[:fb_post_sig_preload_user_permission] = {
       :pattern => ".*",
       :query => "SELECT publish_stream FROM permissions WHERE uid={*user*};"
     }
     
-    preload_fql[:preload_friends] = {
+    preload_fql[:fb_post_sig_preload_friends] = {
       :pattern => ".*",
       :query => "SELECT uid2 FROM friend WHERE uid1={*user*};"
     }
