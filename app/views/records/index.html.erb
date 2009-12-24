@@ -44,8 +44,8 @@
 <div id='content'>
   <div class='fl-l'>
     <div>
-      <%= fb_profile_pic(@user.fb_id)%>
-      <%= fb_name(@user.fb_id)%>
+      <%= link_to image_tag(@user.image), user_records_path(@user) %>
+      <%= link_to @user.name, user_records_path(@user) %>
     </div>
     <table>
       <tbody id='status_list'>
