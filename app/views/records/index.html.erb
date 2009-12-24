@@ -44,8 +44,8 @@
 <div id='content'>
   <div class='fl-l'>
     <div>
-      <%= link_to image_tag(@user.image), user_records_path(@user) %>
-      <%= link_to @user.name, user_records_path(@user) %>
+      <%= image_tag(@user.image) %>
+      <%= @user.name %>
     </div>
     <table>
       <tbody id='status_list'>
