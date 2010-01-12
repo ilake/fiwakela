@@ -55,6 +55,10 @@ a.button {
 .alert-red, a.alert-red {
   color:#C62B26;
 }
+.ft-w {
+  font-weight:bold;
+  font-size:15px;
+}
 /* ~~~~~~~~~~ FORM STYLE ~~~~~~~~~~ */
 
 #form {
@@ -90,6 +94,15 @@ form .submit {
 
 form .submit:hover {
     background: #333;
+}
+
+form .content {
+  color: #AA5511;
+  font-size:13px;
+}
+h2.title {
+  color:#000000;
+  font-size:15px;
 }
 
 /* ~~~~~~~ Friend style ~~~~~~~~*/

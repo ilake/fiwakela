@@ -38,7 +38,7 @@
     secret: '私密內容'
   status:
     score: '積分'
-    num: '次數'
+    num: '紀錄數'
     rate: '成功率'
     average: '平均'
     cont: '連續次數'

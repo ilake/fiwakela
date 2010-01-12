@@ -7,12 +7,16 @@
   <td></td>
 </tr>
 <tr>
+  <th><%= t'record.target'%>:</th>
+  <td><%= target_time_status(user) %></td>
+</tr>
+<tr>
   <th><%= t'status.num'%>:</th>
   <td><%=h status.num %></td>
 </tr>
 <tr>
   <th><%= t'status.rate' %>:</th>
-  <td><%=h status.success_rate %></td>
+  <td><%= number_to_percentage(status.success_rate, :precision => 1) || 0%></td>
 </tr>
 <tr>
   <th><%= t'status.average' %>:</th>
@@ -21,10 +25,6 @@
 <tr>
   <th><%= t'status.cont'%>:</th>
   <td><%=h status.continuous_num %></td>
-</tr>
-<tr>
-  <th><%= t'record.target'%>:</th>
-  <td><%= target_time_status(user) %></td>
 </tr>
 
 <tr>

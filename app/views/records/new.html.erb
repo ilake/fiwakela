@@ -1,4 +1,4 @@
-<h2><%= @realtime ? t('record.create_realtime_record') : t('record.create_record') %></h2>
+<h2 class='title'><%= @realtime ? t('record.create_realtime_record') : t('record.create_record') %></h2>
 
 <div id='form'>
   <% remote_form_for(@record) do |f| %>
@@ -7,7 +7,7 @@
       <%= t'record.time'%><br />
       <% 
         if @realtime 
-          concat @record.time.to_s(:fulltime) 
+          concat "<span class='content'>#{@record.time.to_s(:fulltime)}</span>"
           concat f.hidden_field :time 
         else
           concat f.datetime_select :time, :use_month_numbers => true, :end_year => Time.now.year , :include_seconds => true
@@ -19,7 +19,7 @@
       <%= f.text_area :content, :rows => '5', :cols => '36', :class => 'text' %>
     </p>
     <p>
-      <%= t'record.pri' %><br />
+      <span class='alert-red ft-w'><%= t'record.pri' %></span><br />
       <%= f.check_box :pri %>
     </p><br />
     <p>
