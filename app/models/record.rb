@@ -92,7 +92,6 @@ class Record < ActiveRecord::Base
     end
 
     if times.blank?
-      #average = Time.mktime( 1982, 1, 8, 0, 0, 0)
       average = Time.zone.local( 1982, 1, 8, 0, 0, 0)
     else
       hours = 0
@@ -112,7 +111,6 @@ class Record < ActiveRecord::Base
       min = (day_sec-hour.hour)/60
 
       average = Time.zone.local( 1982, 1, 8, hour, min, 0)
-      #average = Time.mktime( 1982, 1, 8, hour, min, 0)
     end
   end
 
