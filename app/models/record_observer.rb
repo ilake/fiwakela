@@ -17,12 +17,16 @@ class RecordObserver < ActiveRecord::Observer
   end
 
   def update_user_status(record)
-    @user.status.state = @user.records.cal_today_state
-    @user.status.average = @user.records.cal_average
-    @user.status.success_rate = @user.records.cal_success_rate
-    @user.status.continuous_num = @user.records.cal_continuous_num
-    @user.status.score = @user.records.cal_score if record.status  #即時才需要算分數
-    @user.status.last_record_at = @user.records.order_by('time').first ? @user.records.order_by('time').first.time : nil
-    @user.status.save!
+    status = @user.status
+    records = @user.records
+    status.state          = records.cal_today_state
+    status.average        = records.cal_average
+    status.success_rate   = records.cal_success_rate
+    status.continuous_num = records.cal_continuous_num
+    status.score          = records.cal_score if record.status  #即時才需要算分數
+    status.last_record_at = records.order_by('time').first ? records.order_by('time').first.time : nil
+
+    status.update_badges(status.num, status.continuous_num)
+    status.save!
   end
 end

@@ -35,6 +35,7 @@
     update: 'Update'
     secret: 'Secret Content'
   status:
+    badges: 'Badges'
     score: 'Score'
     num: 'Amount'
     rate: 'Successful Rate'
@@ -46,6 +47,12 @@
     target: 'Wake Up Target Time'
     name: 'Name'
     editsetting: 'Editing setting'
+  badges:
+    title: 'Badges'
+    num_7: 'have 7 records'
+    num_30: 'have 30 records'
+    con_7: 'Get up early successful 7 consecutive days'
+    con_30: 'Get up early successful 30 consecutive days'
   friend:
     list: 'Friend list'
     absence: 'Absence'

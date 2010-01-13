@@ -1,9 +1,10 @@
-<p>
-  <b>Target Time:</b>
-  <%=h @user.target_time.to_s(:hm) if @user.target_time %>
-</p>
-
-<p>
-  <b>Timezone:</b>
-  <%=h @user.timezone %>
-</p>
+<h2 class='title'><%= t'badges.title'%></h2>
+<table cellspacing="0">
+  <tbody id='badges'>
+    <% Status::BADGES_COLUMN[0].sort.map{|a| a[1]}.each do |col|%>
+      <tr> 
+        <td class='badges-desc <%= 'complete' if @status.send(col) %>'><%= t"badges.#{col.to_s}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

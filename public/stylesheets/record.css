@@ -62,7 +62,7 @@ a.button {
 /* ~~~~~~~~~~ FORM STYLE ~~~~~~~~~~ */
 
 #form {
-  margin-top :15px;
+  margin-top :10px;
   padding:5px;
   background: #f4f4f4;
 }
@@ -103,6 +103,7 @@ form .content {
 h2.title {
   color:#000000;
   font-size:15px;
+  margin-bottom:5px;
 }
 
 /* ~~~~~~~ Friend style ~~~~~~~~*/
@@ -360,4 +361,31 @@ a.tip {
   cursor:pointer;
   outline-style:none;
   text-decoration:none;
+}
+/* ~~~~~~~ Badges style ~~~~~~~~*/
+#badges {
+  margin-top:10px;
+  background-color: #E4E4E4;
+}
+
+#badges tr {
+  display:table-row;
+  vertical-align:inherit;
+  color: #FFFFFF;
+  height:22px;
+  border-bottom: 1px solid #EFEFEF;
+  padding:3px;
+  margin:1px;
+}
+
+#badges .badges-desc{
+  width: 350px;
+  font-size: 15px;
+  padding:5px 3px 5px 12px;
+  text-align: left;
+}
+
+#badges td.complete {
+  color: #00C618;
+  font-weight: bold;
 }

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def update
     set_target_time
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @me.update_attributes(params[:user])
         flash[:notice] = 'User was successfully updated.'
         format.html { redirect_to records_path }
         format.js
@@ -20,6 +20,11 @@ class UsersController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+
+  #Show Badges
+  def show
+    @status = @user.status
   end
 
   private

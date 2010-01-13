@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20091209230600
+# Schema version: 20100112150513
 #
 # Table name: statuses
 #
@@ -13,6 +13,7 @@
 #  success_rate   :float           default(0.0)
 #  last_record_at :datetime
 #  total_score    :integer(4)      default(0)
+#  badges         :integer(4)
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

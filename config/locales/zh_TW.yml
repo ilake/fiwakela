@@ -37,6 +37,7 @@
     update: '更新'
     secret: '私密內容'
   status:
+    badges: '成就'
     score: '積分'
     num: '紀錄數'
     rate: '成功率'
@@ -48,6 +49,12 @@
     target: '目標起床時間'
     name: '名字'
     editsetting: '編輯設定'
+  badges:
+    title: '成就'
+    num_7: '已達7筆紀錄'
+    num_30: '已達30筆紀錄'
+    con_7: '連續7天早起成功'
+    con_30: '連續30天早起成功'
   friend:
     list: '朋友列表'
     absence: '沒到'
