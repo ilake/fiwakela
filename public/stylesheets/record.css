@@ -304,14 +304,21 @@ h2.title {
   margin:10px;
 }
 
+h2.rank-desc {
+  margin: 10px 0px 30px 0px;
+}
+
 .even {
   background-color :#F4FBF3;
 }
 /* ~~~~~~~~~ Tip Style ~~~~~~~~~~ */
-a.tip {
-  color: #AA5511;
+a.tip{
   font-size: 13px;
   cursor:help;
+}
+
+.tip {
+  color: #AA5511;
 }
 
 .fb-header {

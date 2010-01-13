@@ -7,12 +7,17 @@
   <%= t'rank.tet'%>: <%= select_hour @target_time %>:
   <%= submit_tag t('rank.submit'), :class => 'submit' %>
 <% end %>
-
 <% if @watch_rank %>
 <div id='user-rank-no'>
   <h2><%= t'rank.uri'%>: <%= @rank.ordinalize %></h2>
 </div>
 <% end %>
+
+<% zone = Time.zone %>
+<h2 class='title rank-desc'>
+  <%= t'rank.desc1'%><span class='tip'><%= "#{zone.tzinfo} #{zone.formatted_offset}"%></span>
+  <%= t'rank.desc2'%><span class='tip'><%= @target_time.to_s(:hm) %></span><%= t'rank.desc3'%>
+</h2>
 <table id='ranks-list'>
   <thead>
     <th style='width: 20px;'></th>

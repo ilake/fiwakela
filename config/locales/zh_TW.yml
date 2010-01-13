@@ -72,6 +72,9 @@
     tet: '目標早於'
     uri: '你的名次是'
     submit: '查詢'
+    desc1: '這是時區'
+    desc2: '目標時間早於'
+    desc3: '的排行榜'
   tutorial:
     title1: "1. 設定早起目標"
     title2: "2. 起床做紀錄"

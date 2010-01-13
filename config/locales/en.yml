@@ -73,6 +73,9 @@
     tet: 'TargetTime early than'
     uri: 'Your Rank is'
     submit: 'Query'
+    desc1: ' This is Timezone '
+    desc2: ' target time early than '
+    desc3: ' ranking'
   tutorial:
     title1: "1. Set Target Time"
     title2: "2. Wake up"
