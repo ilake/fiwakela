@@ -1,7 +1,6 @@
 <div id="top-menu">
   <%= link_to t('common.home'), user_records_path(session[:user]) %>
   <%= link_to t('common.rank'), ranks_url %>
-  <%= link_to t('status.badges'), user_path(@user), :rel => "facebox" %>
   <% owner_area do  %>
     <%= link_to t('common.setting'), edit_user_path(session[:user]), :rel => "facebox" %>
   | 

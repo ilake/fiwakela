@@ -31,3 +31,7 @@
   <th><%= t'user.timezone'%>:</th>
   <td><%=h user.timezone %></td>
 </tr>
+<tr>
+  <th><%= t'status.badges' %>:</th>
+  <td><%= link_to t('status.badges'), user_path(user), :rel => "facebox", :class => "tip" %></td>
+</tr>
