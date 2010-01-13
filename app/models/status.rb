@@ -29,7 +29,8 @@ class Status < ActiveRecord::Base
 
   belongs_to :user
 
-  BADGES_COLUMN = [1 => :num_7, 2 => :num_30, 11 => :con_7, 12 => :con_30]
+  BADGES_COLUMN = [1 => :num_7, 2 => :num_30, 3 => :num_100, 4 => :num_365, 
+                   11 => :con_7, 12 => :con_30, 13 => :con_100, 14 => :con_365]
   BADGES_COLUMN.push(:column => 'badges')
   
   has_flags *BADGES_COLUMN

@@ -3,7 +3,9 @@
   <tbody id='badges'>
     <% Status::BADGES_COLUMN[0].sort.map{|a| a[1]}.each do |col|%>
       <tr> 
-        <td class='badges-desc <%= 'complete' if @status.send(col) %>'><%= t"badges.#{col.to_s}" %></td>
+        <td class='badges-desc <%= 'complete' if @status.send(col) %>'>
+          <%= badge_name(col) %>
+        </td>
       </tr>
     <% end %>
   </tbody>

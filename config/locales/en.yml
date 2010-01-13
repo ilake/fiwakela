@@ -49,10 +49,8 @@
     editsetting: 'Editing setting'
   badges:
     title: 'Badges'
-    num_7: 'have 7 records'
-    num_30: 'have 30 records'
-    con_7: 'Get up early successful 7 consecutive days'
-    con_30: 'Get up early successful 30 consecutive days'
+    num: "have {{num}} records"
+    con: "Get up early successful {{num}} consecutive days"
   friend:
     list: 'Friend list'
     absence: 'Absence'
