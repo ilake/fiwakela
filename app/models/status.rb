@@ -43,16 +43,17 @@ class Status < ActiveRecord::Base
   end
 
   def update_badges(amount, cont_num)
-    if cont_num == 2
-      self.con_2 = true
-    elsif cont_num == 4
-      self.con_4 = true
+    @option_list ||= Status::BADGES_COLUMN[0].sort.map{|a| a[1].to_s}
+
+    @num_list ||= @option_list.map{|o| o.split('_')[1].to_i if o.match(/num/)}.compact
+    @con_list ||= @option_list.map{|o| o.split('_')[1].to_i if o.match(/con/)}.compact
+
+    if @num_list.include?(amount)
+      self.send("num_#{amount}=".to_sym, true)
     end
 
-    if amount == 3
-      self.num_3 = true
-    elsif amount == 5
-      self.num_5 = true
+    if @con_list.include?(cont_num)
+      self.send("con_#{cont_num}=".to_sym, true)
     end
   end
 end
