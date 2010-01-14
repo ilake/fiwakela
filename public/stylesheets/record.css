@@ -313,6 +313,7 @@ h2.rank-desc {
 }
 /* ~~~~~~~~~ Tip Style ~~~~~~~~~~ */
 a.tip{
+  color: #AA5511;
   font-size: 13px;
   cursor:help;
 }

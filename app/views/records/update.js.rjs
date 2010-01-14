@@ -6,3 +6,4 @@ page.visual_effect :highlight, "status_list"
 page.call(:binding_facebox, "record-#{@record.id}")
 page.call(:binding_facebox, "score-tip")
 page.call(:binding_hover, "record-#{@record.id}")
+page.call(:binding_facebox, "status-bridge")

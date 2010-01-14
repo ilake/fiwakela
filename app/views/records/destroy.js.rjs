@@ -2,3 +2,4 @@ page.visual_effect :Fade, "record-#{@record.id}"
 page.replace_html "status_list", :partial => 'status', :locals => {:status => @user.status, :user => @user}
 page.call(:binding_facebox, "score-tip")
 page.visual_effect :highlight, "status_list"
+page.call(:binding_facebox, "status-bridge")
