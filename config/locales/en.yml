@@ -5,7 +5,7 @@
     setting: 'Setting'
     fanspage: 'FansPage'
     invite: 'Invite'
-    apname: 'EarlyBird'
+    apname: 'Iwakela'
     life: "'s Early Life"
     result: "Harvest"
     action: 'Wake Up Early'
@@ -80,9 +80,9 @@
     title1: "1. Set Target Time"
     title2: "2. Wake up"
     title3: "3. Review"
-    desc1: 'EarlyBird is a tool to record the time you wake up, so please set your target time in beginning'
+    desc1: 'Iwakela is a tool to record the time you wake up, so please set your target time in beginning'
     desc2: 'Wake up and record it'
-    desc3: 'EarlyBird would calcuate your average time ...etc. To help you have the early habitus'
+    desc3: 'Iwakela would calcuate your average time ...etc. To help you have the early habitus'
   date:
     formats:
       default: "%Y-%m-%d"
