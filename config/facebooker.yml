@@ -11,7 +11,7 @@
 production:
   api_key: 67e7091533f2616620e062794b957625
   secret_key: c4dcdf5990c5b13f1e1a2d121709d4b4
-  canvas_page_name: iwake
+  canvas_page_name: iwakela
   callback_url: http://fb.iwakela.com
   pretty_errors: true
   set_asset_host_to_callback_url: false
