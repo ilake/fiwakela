@@ -24,7 +24,7 @@ development:
   adapter: mysql
   database: fb_dev
   username: root
-  password:
+  password: 0okm9ijn
   host: localhost
   encoding: utf8
 
@@ -35,13 +35,13 @@ test:
   adapter: mysql
   database: earlybirds_test
   username: root
-  password:
+  password: 0okm9ijn
   host: localhost
 
 production:
   adapter: mysql
   database: fb_pro
   username: root
-  password: hiroot
+  password: 0okm9ijn
   host: localhost
   encoding: utf8

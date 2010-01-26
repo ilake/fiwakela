@@ -1,0 +1,39 @@
+
+
+common: &default_settings
+  license_key: 'c577c75c46cfa61449ee8f9d8f6c432352b42fcf'
+  app_name: fiwakela
+  enabled: true
+  log_level: info
+  ssl: no
+  capture_params: false
+  
+  transaction_tracer:
+    enabled: true
+    record_sql: obfuscated
+    stack_trace_threshold: 0.500
+
+  error_collector:
+    enabled: true
+    capture_source: true
+    
+development:
+  <<: *default_settings
+  enabled: false
+
+  developer: true
+
+test:
+  <<: *default_settings
+  enabled: false
+
+production:
+  <<: *default_settings
+  enabled: true
+
+staging:
+  <<: *default_settings
+  enabled: false
+  app_name:  (Staging)
+
+
