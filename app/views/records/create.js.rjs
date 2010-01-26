@@ -3,7 +3,7 @@ page.visual_effect :highlight, "record-#{@record.id}"
 page.call(:close_facebox)
 page.replace_html "status_list", :partial => 'status', :locals => {:status => @user.status, :user => @user}
 page.visual_effect :highlight, "status_list"
-page.call(:trigger_publish, t('common.result'), @record.content, @status_partial, t('common.action'))
+page.call(:trigger_publish, @result, @record.content, @status_partial, t('common.action'))
 page.call(:binding_facebox, "record-#{@record.id}")
 page.call(:binding_facebox, "score-tip")
 page.call(:binding_hover, "record-#{@record.id}")

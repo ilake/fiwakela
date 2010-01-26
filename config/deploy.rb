@@ -28,15 +28,13 @@ role :app, domain
 role :web, domain
 role :db,  domain, :primary => true
 
-after 'deploy:symlink',  'iwakela:extra_setting'
+after 'deploy:symlink',  'fiwakela:extra_setting'
 
 namespace :fiwakela do 
   task :extra_setting do
     %w(database facebooker).each do |setting|
-      run <<-CMD
-        config = "#{latest_release}/config/#{setting}.yml.online"
-        run "cp #{config} #{latest_release}/config/#{setting}.yml;"
-    CMD
+      config = "#{latest_release}/config/#{setting}.yml.online"
+      run "cp #{config} #{latest_release}/config/#{setting}.yml;"
     end
 
   end
@@ -49,9 +47,14 @@ namespace :fiwakela do
     run "cd #{latest_release} && rake asset:packager:build_all;"
   end
 
+  task :chown do
+    run "cd #{latest_release} && chown www-data #{latest_release}/config/environment.rb;"
+  end
+
   task :start do 
     deploy::migrate
     #rebuild_asset
+    chown
     restart
   end
 
