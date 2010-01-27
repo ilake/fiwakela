@@ -11,6 +11,15 @@
           $jq(this).find('.record-info').hide();
           $jq(this).removeClass('even');
         }
+        );
+
+      $jq('#friend-cell').hover(
+        function(){
+          $jq(this).addClass('even');
+        },
+        function(){
+          $jq(this).removeClass('even');
+        }
       );
     })
   </script>

@@ -31,7 +31,7 @@
     content: '內容'
     pri: '私密(只有你能看到)'
     create_realtime_record: '建立即時紀錄'
-    create_record: '建立紀錄'
+    create_record: '補上紀錄(無積分)'
     edit_record: '編輯紀錄'
     submit: '送出'
     update: '更新'
