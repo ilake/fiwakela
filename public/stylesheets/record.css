@@ -126,7 +126,7 @@ h2.title {
   margin:2px;
 }
 
-#friend-cell {
+.friend-cell {
   width: 130px;
   margin:6px 0px 3px 0px;
   border-bottom: 1px #D6D9DE solid;

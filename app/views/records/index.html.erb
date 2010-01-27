@@ -13,7 +13,7 @@
         }
         );
 
-      $jq('#friend-cell').hover(
+      $jq('.friend-cell').hover(
         function(){
           $jq(this).addClass('even');
         },
@@ -95,7 +95,7 @@
 <div id='friend-list'>
   <h2 id='friend-list-header'><%= t'friend.list'%></h2>
   <% for friend in @friends %>
-    <div id='friend-cell'>
+    <div class='friend-cell'>
       <div>
         <%= link_to image_tag(friend.image), user_records_path(friend.id), :class => 'fl-l' %>
         <%= friend_status(friend.status.state ) %>
