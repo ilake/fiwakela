@@ -13,8 +13,8 @@
     result: '早起成果'
     action: '我也要早起'
   record:
-    target: '目標'
-    wake: '起床'
+    target: '目標時間'
+    wake: '起床時間'
     wakeup: '現在起床'
     add: '補上'
     trange: '查詢'
@@ -41,7 +41,7 @@
     score: '積分'
     num: '紀錄數'
     rate: '成功率'
-    average: '平均'
+    average: '平均起床時間'
     cont: '連續次數'
     norecord: '尚無紀錄'
   user:

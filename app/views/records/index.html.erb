@@ -42,6 +42,18 @@
 
 <div style='clear:both;'></div>
 <div id='content'>
+  <div id='action-menu'>
+  <% owner_area do  %>
+      <%= link_to "<span>#{t('record.wakeup')}</span>", new_record_path, :alt => 'Wake Up', :title =>'Wake Up',
+      :rel => "facebox", :class => 'button fl-l'  %>
+      <%= link_to "<span>#{t('record.add')}</span>", new_record_path(:type => 'add'), :alt => 'add', :title => 'add',
+      :rel => "facebox", :class => 'button fl-l'  %>
+    <% end%>
+    <a href='#record-info' class='tip fl-l' rel='facebox'>[?]</a>
+    <div id='date_range'>
+      <%= render :partial => 'date_range', :locals => {:user => @user, :startDate => @startDate, :endDate => @endDate} %>
+    </div>
+  </div>
   <div class='fl-l'>
     <div>
       <%= image_tag(@user.image) %>
@@ -59,19 +71,9 @@
 
 
   <div class='clear'></div>
-  <div id='action-menu'>
-  <% owner_area do  %>
-      <%= link_to "<span>#{t('record.wakeup')}</span>", new_record_path, :alt => 'Wake Up', :title =>'Wake Up',
-      :rel => "facebox", :class => 'button fl-l'  %>
-      <%= link_to "<span>#{t('record.add')}</span>", new_record_path(:type => 'add'), :alt => 'add', :title => 'add',
-      :rel => "facebox", :class => 'button fl-l'  %>
-    <% end%>
-    <a href='#record-info' class='tip fl-l' rel='facebox'>[?]</a>
-    <div id='date_range'>
-      <%= render :partial => 'date_range', :locals => {:user => @user, :startDate => @startDate, :endDate => @endDate} %>
-    </div>
-  </div>
 
+
+  <h2 id='record_list_header'>日誌列表</h2>
   <div id='record_list'>
     <% @records.each do |record| %>
       <%= render :partial => 'record', :locals => {:record => record, :me => @me}%>
@@ -82,7 +84,7 @@
   </div>
 </div>
 <div id='friend-list'>
-  <h2><%= t'friend.list'%></h2>
+  <h2 id='friend-list-header'><%= t'friend.list'%></h2>
   <% for friend in @friends %>
     <div id='friend-cell'>
       <div>

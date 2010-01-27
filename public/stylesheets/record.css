@@ -1,7 +1,8 @@
 /* ~~~~~~~~~ Basic style ~~~~~~~~~~~~*/
 h2 {
   font-size:138.5%;
-  color: #555;
+  color: #333;
+  font-weight:bold;
 }
 
 h3 {
@@ -116,10 +117,17 @@ h2.title {
   padding-top:2px;
 }
 
+#friend-list-header {
+  color:#FFFFFF;
+  background-color:#3B5998;
+  font-weight:bold;
+  padding:2px;
+}
+
 #friend-cell {
   width: 130px;
   margin:6px 0px 3px 0px;
-  border-bottom: 1px #ddd dotted;
+  border-bottom: 1px #D6D9DE solid;
   padding: 2px;
 }
 
@@ -174,6 +182,11 @@ h2.title {
   padding:8px 0px 8px 10px;
 }
 
+#record_list_header {
+  padding:3px;
+  background-color:#EEEEEE;
+}
+
 #action-menu {
   background:#EEEEEE none repeat scroll 0 0;
   border:1px solid #CCCCCC;
@@ -181,6 +194,13 @@ h2.title {
   margin-bottom:20px;
   padding:3px;
   height:26px;
+}
+#top-menu a{
+  font-size:15px;
+}
+
+#top-menu span {
+  margin:0px 4px 0px 4px;
 }
 
 .record-action {
@@ -306,6 +326,8 @@ h2.title {
 
 h2.rank-desc {
   margin: 10px 0px 30px 0px;
+  background-color:#EFEFEF;
+  padding: 4px;
 }
 
 .even {
@@ -335,6 +357,7 @@ a.tip{
   padding:5px 10px 5px 10px;
   display:block;
   border: 2px solid #CCCCCC;
+  background-color:#EFEFEF;
   height:100px;
   margin-bottom:20px;
 }

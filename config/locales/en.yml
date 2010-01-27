@@ -10,8 +10,8 @@
     result: "Harvest"
     action: 'Wake Up Early'
   record:
-    target: 'Target'
-    wake: 'WakeUp'
+    target: 'Target Time'
+    wake: 'WakeUp Time'
     num: 'Number'
     wakeup: 'Wake Up'
     add: 'Add'

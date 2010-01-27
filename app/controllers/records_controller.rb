@@ -66,14 +66,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.save
-        status = @user.status
-        status.cal_total_score(session[:friend_ids])
-        @status_partial = "#{t('record.wake')}:#{@record.time.to_s(:hm)} 
-        #{t('status.average')}:#{status.average.to_s(:hm)} 
-        #{t('status.cont')}:#{status.continuous_num}"
-        result = @record.success ? t('record.success') : t('record.fail')
-        @result = "#{t('common.result')}: #{result}"
-
+        wall_partial
         flash[:notice] = 'Record was successfully created.'
         format.html { redirect_to(@record) }
         format.js
@@ -94,8 +87,7 @@ class RecordsController < ApplicationController
 
     respond_to do |format|
       if @record.update_attributes(params[:record])
-        @user.status.cal_total_score(session[:friend_ids])
-
+        wall_partial
         flash[:notice] = 'Record was successfully updated.'
         format.html { redirect_to(@record) }
         format.js
@@ -130,6 +122,17 @@ class RecordsController < ApplicationController
 
   def find_record
     @record = @user.records.find(params[:id])
+  end
+
+  def wall_partial
+    status = @user.status
+    status.cal_total_score(session[:friend_ids])
+
+    @status_partial = "#{t('record.wake')}:#{@record.time.to_s(:hm)} 
+    #{t('status.average')}:#{status.average.to_s(:hm)} 
+    #{t('status.cont')}:#{status.continuous_num}"
+    result = @record.success ? t('record.success') : t('record.fail')
+    @result = "#{t('common.result')}: #{result}"
   end
 
 end

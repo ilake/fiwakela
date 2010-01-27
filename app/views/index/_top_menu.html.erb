@@ -1,10 +1,20 @@
 <div id="top-menu">
-  <%= link_to t('common.home'), user_records_path(session[:user]) %>
-  <%= link_to t('common.rank'), ranks_url %>
+  <span>
+    <%= link_to t('common.home'), user_records_path(session[:user]) %>
+  </span>
+  <span>
+    <%= link_to t('common.rank'), ranks_url %>
+  </span>
   <% owner_area do  %>
-    <%= link_to t('common.setting'), edit_user_path(session[:user]), :rel => "facebox" %>
-  | 
-    <%= link_to t('common.invite'), friend_url %>
+    <span>
+      <%= link_to t('common.setting'), edit_user_path(session[:user]), :rel => "facebox" %>
+    </span>
+    | 
+    <span>
+      <%= link_to t('common.invite'), friend_url %>
+    </span>
   <% end %>
-  <a href='http://www.facebook.com/apps/application.php?id=133258073504' target='_blank'><%= t'common.fanspage'%></a>
+  <span>
+    <a href='http://www.facebook.com/apps/application.php?id=133258073504' target='_blank'><%= t'common.fanspage'%></a>
+  </span>
 </div>
