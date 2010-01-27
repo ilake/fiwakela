@@ -132,6 +132,9 @@ h2.title {
   border-bottom: 1px #D6D9DE solid;
   padding: 2px;
 }
+.friend-time {
+  padding:8px 0px 4px 8px;
+}
 
 .bulb {
   background-image :url(/images/merge.png);
