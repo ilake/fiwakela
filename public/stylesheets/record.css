@@ -115,13 +115,15 @@ h2.title {
   height: 680px;
   padding-left:2px;
   padding-top:2px;
+  margin-top:12px;
 }
 
 #friend-list-header {
   color:#FFFFFF;
   background-color:#3B5998;
   font-weight:bold;
-  padding:2px;
+  padding:4px;
+  margin:2px;
 }
 
 #friend-cell {
@@ -190,7 +192,7 @@ h2.title {
 #action-menu {
   background:#EEEEEE none repeat scroll 0 0;
   border:1px solid #CCCCCC;
-  margin-top:20px;
+  margin-top:10px;
   margin-bottom:20px;
   padding:3px;
   height:26px;
