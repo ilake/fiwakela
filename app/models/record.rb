@@ -45,11 +45,11 @@ class Record < ActiveRecord::Base
 
   def validate_on_create
     errors.add_to_base(I18n.t("record.exist")) if self.user && self.user.records.time2_in(self.time.beginning_of_day, self.time.end_of_day).count >= 1
-    errors.add_to_base(I18n.t("record.future")) if self.time > Time.zone.now
+    errors.add_to_base(I18n.t("record.future")) if self.time && self.time > Time.zone.now
   end
 
   def validate_on_update
-    errors.add_to_base(I18n.t("record.future")) if self.time > Time.zone.now
+    errors.add_to_base(I18n.t("record.future")) if self.time && self.time > Time.zone.now
   end
 
   
