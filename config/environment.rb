@@ -19,7 +19,8 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'hoptoad_notifier'
+  #config.gem 'hoptoad_notifier'
+  config.gem 'thoughtbot-hoptoad_notifier', :lib => 'hoptoad_notifier', :source => 'http://gems.github.com'
   config.gem "sanitize"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
