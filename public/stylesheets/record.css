@@ -426,3 +426,13 @@ a.tip{
   font-weight: bold;
   background-color: #FEFEFE;
 }
+
+/* ~~~~~~~~ Adsense Style ~~~~~~~~~~~*/
+#adsense {
+  padding:5px 10px 5px 10px;
+  display:block;
+  border: 1px solid #CCCCCC;
+  background-color:#FFFFFF;
+  height:100px;
+  margin-bottom:12px;
+}
