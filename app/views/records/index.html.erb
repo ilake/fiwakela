@@ -1,28 +1,5 @@
 <% content_for :js_rdy do %>
-  <script>
-
-    jQuery(document).ready(function($) {
-      $jq('.record-cell').hover(
-        function(){
-          $jq(this).find('.record-info').show();
-          $jq(this).addClass('even');
-        },
-        function(){
-          $jq(this).find('.record-info').hide();
-          $jq(this).removeClass('even');
-        }
-        );
-
-      $jq('.friend-cell').hover(
-        function(){
-          $jq(this).addClass('even');
-        },
-        function(){
-          $jq(this).removeClass('even');
-        }
-      );
-    })
-  </script>
+  <%= javascript_include_tag 'record' %>
 <% end %>
 <% owner_area do  %>
   <% if @is_rookie %>
