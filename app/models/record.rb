@@ -73,7 +73,7 @@ class Record < ActiveRecord::Base
   end
 
   def create_target_time(user)
-    if t_time = user.target_time
+    if user && t_time = user.target_time
       Time.zone.local(time.year.to_i, time.month.to_i, time.day.to_i, t_time.hour, t_time.min, 0)
     end
   end
