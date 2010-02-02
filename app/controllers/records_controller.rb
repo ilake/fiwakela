@@ -129,7 +129,7 @@ class RecordsController < ApplicationController
     status.cal_total_score(session[:friend_ids])
 
     @status_partial = "#{t('record.wake')}:#{@record.time.to_s(:hm)} 
-    #{t('status.average')}:#{status.average.to_s(:hm)} 
+    #{t('status.average')}:#{status.average.strftime("%H:%M")} 
     #{t('status.cont')}:#{status.continuous_num}"
     result = @record.success ? t('record.success') : t('record.fail')
     @result = "#{t('common.result')}: #{result}"
