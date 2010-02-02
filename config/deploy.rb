@@ -54,7 +54,7 @@ namespace :fiwakela do
   task :start do 
     deploy::migrate
     #rebuild_asset
-    #chown
+    chown
     restart
   end
 
