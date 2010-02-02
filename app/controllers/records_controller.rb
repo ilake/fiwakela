@@ -62,7 +62,7 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.xml
   def create
-    @record = @user.records.new(params[:record])
+    @record = @me.records.new(params[:record])
 
     respond_to do |format|
       if @record.save
@@ -105,7 +105,7 @@ class RecordsController < ApplicationController
   # DELETE /records/1.xml
   def destroy
     @record.destroy
-    @user.status.cal_total_score(session[:friend_ids])
+    @me.status.cal_total_score(session[:friend_ids])
 
     respond_to do |format|
       format.html { redirect_to(records_url) }
@@ -121,11 +121,11 @@ class RecordsController < ApplicationController
   end
 
   def find_record
-    @record = @user.records.find(params[:id])
+    @record = @me.records.find(params[:id])
   end
 
   def wall_partial
-    status = @user.status
+    status = @me.status
     status.cal_total_score(session[:friend_ids])
 
     @status_partial = "#{t('record.wake')}:#{@record.time.to_s(:hm)} 
