@@ -42,6 +42,8 @@ class Record < ActiveRecord::Base
 
   named_scope :time2_in, lambda{|start, endtime|{:conditions => ["time > ? AND time < ?", start, endtime]}}
 
+  validates_presence_of :user_id, :content, :time
+
 
   def validate_on_create
     errors.add_to_base(I18n.t("record.exist")) if self.user && self.user.records.time2_in(self.time.beginning_of_day, self.time.end_of_day).count >= 1

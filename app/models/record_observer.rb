@@ -33,7 +33,7 @@ class RecordObserver < ActiveRecord::Observer
   def init_data(record)
     @record ||= record
     @user ||= record.user
-    @status ||= @user.status
-    @records ||= @user.records
+    @status ||= @user && @user.status
+    @records ||= @user && @user.records
   end
 end
