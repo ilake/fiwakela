@@ -56,7 +56,7 @@
   </div>
   <div class='fl-l'>
     <div>
-      <%= image_tag(@user.image || 'http://static.ak.fbcdn.net/pics/q_silhouette.gif') %>
+      <%= user_image_tag(@user.image) %>
       <%= @user.name %>
     </div>
     <table>
@@ -89,7 +89,7 @@
     <div class='friend-cell'>
       <div>
         <%= friend_status(friend.status.state ) %>
-        <%= link_to image_tag(friend.image), user_records_path(friend.id), :alt => friend.name, :title => friend.name %>
+        <%= link_to user_image_tag(friend.image), user_records_path(friend.id), :alt => friend.name, :title => friend.name %>
       </div>
       <div class='friend-time'>
         <%= link_to last_record_status(friend), user_records_path(friend.id), :alt => t('friend.status'), :title => t('friend.status') %>

@@ -43,7 +43,7 @@
     <tr class="<%= cycle('even', 'odd') %>">
       <td style='color:#000000; font-size:16px; font-weight:bold;'><%= i+1 %></td>
       <td>
-        <%= link_to image_tag(user.image), "http://www.facebook.com/profile.php?id=#{user.fb_id}", :target => '_blank' %>
+        <%= link_to user_image_tag(user.image), "http://www.facebook.com/profile.php?id=#{user.fb_id}", :target => '_blank' %>
       </td>
       <td>
         <%= link_to user.name, "http://www.facebook.com/profile.php?id=#{user.fb_id}", :target => '_blank' %>
