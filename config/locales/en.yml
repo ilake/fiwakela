@@ -40,7 +40,7 @@
     num: 'Amount'
     rate: 'Successful Rate'
     average: 'Average'
-    cont: 'Continuous times'
+    cont: 'Continuous nums'
     norecord: 'No Record'
   user:
     timezone: 'Timezone'
