@@ -1,11 +1,11 @@
 <p>
-  <b>Time:</b>
+  <b><%= t('record.wake')%>:</b>
   <%=h @record.time %>
 </p>
 
 <p>
-  <b>Target time:</b>
-  <%=h @record.target_time %>
+  <b><%= t'record.target'%>:</b>
+  <%= target_time_status(@me) %>
 </p>
 
 <p>
@@ -14,11 +14,6 @@
 </p>
 
 <p>
-  <b>Success:</b>
-  <%=h @record.success %>
-</p>
-
-<p>
-  <b>Pri:</b>
-  <%=h @record.pri %>
+  <b><%= t('common.result') %>: </b>
+  <%=@record.success ? t('record.success') : t('record.fail') %>
 </p>
