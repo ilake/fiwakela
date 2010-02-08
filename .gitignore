@@ -6,6 +6,7 @@ doc/api
 doc/app
 config/database.yml
 config/facebooker.yml
+public/maintenance.html
 db/*.sqlite3
 **/tags
 db/schema.rb

@@ -39,22 +39,30 @@ namespace :fiwakela do
 
   end
 
-  task :update do 
-    deploy::update
-  end
-
   task :rebuild_asset do
     run "cd #{latest_release} && rake asset:packager:build_all;"
+  end
+
+  task :disabe_web do 
+    set :is_under_maintain, true
+  end
+
+  task :maintain do 
+    run "cp #{latest_release}/public/maintenance.html.online #{latest_release}/public/maintenance.html;"
   end
 
   task :chown do
     run "cd #{latest_release} && chown www-data #{latest_release}/config/environment.rb;"
   end
 
+  task :update do 
+    deploy::update
+  end
+
   task :start do 
     deploy::migrate
-    #rebuild_asset
     chown
+    maintain if is_under_maintain
     restart
   end
 
@@ -67,14 +75,6 @@ namespace :fiwakela do
     start
   end
 end
-
-#
-#Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
-#  $: << File.join(vendored_notifier, 'lib')
-#end
-#
-#require 'hoptoad_notifier/capistrano'
-
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
   $: << File.join(vendored_notifier, 'lib')
