@@ -30,6 +30,10 @@ role :db,  domain, :primary => true
 
 after 'deploy:symlink',  'fiwakela:extra_setting'
 
+task :disable_web do 
+  set :is_under_maintain, true
+end
+
 namespace :fiwakela do 
   task :extra_setting do
     %w(database facebooker).each do |setting|
@@ -43,20 +47,16 @@ namespace :fiwakela do
     run "cd #{latest_release} && rake asset:packager:build_all;"
   end
 
-  task :disabe_web do 
-    set :is_under_maintain, true
-  end
-
-  task :maintain do 
-    run "cp #{latest_release}/public/maintenance.html.online #{latest_release}/public/maintenance.html;"
-  end
-
   task :chown do
     run "cd #{latest_release} && chown www-data #{latest_release}/config/environment.rb;"
   end
 
   task :update do 
     deploy::update
+  end
+
+  task :maintain do 
+    run "cp #{latest_release}/public/maintenance.html.online #{latest_release}/public/maintenance.html;"
   end
 
   task :start do 
